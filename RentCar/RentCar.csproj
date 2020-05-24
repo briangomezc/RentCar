@@ -129,6 +129,9 @@
     <Compile Include="VEHICULO.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTipo_Vehiculo.resx">
       <DependentUpon>FrmTipo_Vehiculo.cs</DependentUpon>
     </EmbeddedResource>
