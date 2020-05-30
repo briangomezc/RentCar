@@ -45,5 +45,22 @@ namespace RentCar
         {
             openChildForm(new FrmMarcaVehiculo());
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+         
+                openChildForm(new FrmVehiculo());
+            
+        }
     }
 }
