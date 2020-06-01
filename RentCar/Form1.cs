@@ -67,5 +67,10 @@ namespace RentCar
         {
             openChildForm(new FrmEmpleado());
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmCombustible());
+        }
     }
 }
