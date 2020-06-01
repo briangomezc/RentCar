@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3da0efc6e1ab4c26bb522dbff0f9a978" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="RentCarModel.CANTIDAD_COMBUSTIBLE" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+      <Diagram DiagramId="3da0efc6e1ab4c26bb522dbff0f9a978" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="RentCarModel.CANTIDAD_COMBUSTIBLE" Width="2.375" PointX="5.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RentCarModel.CLIENTE" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="RentCarModel.COMBUSTIBLE_VEHICULO" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RentCarModel.EMPLEADO" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />

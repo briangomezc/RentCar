@@ -21,6 +21,7 @@ namespace RentCar
         public Nullable<bool> GOMA_DELANTERA_DERECHA { get; set; }
         public Nullable<bool> GOME_DELANTERA_IZQUIERDA { get; set; }
         public string DESCRIPCION { get; set; }
+        public string CODE { get; set; }
     
         public virtual INSPECCION INSPECCION { get; set; }
     }

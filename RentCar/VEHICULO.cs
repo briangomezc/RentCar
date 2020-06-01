@@ -30,6 +30,7 @@ namespace RentCar
         public Nullable<int> ID_MODELO_VEHICULO { get; set; }
         public Nullable<int> ID_TIPO_COMBUSTIBLE { get; set; }
         public System.DateTime FECHA_CREACION { get; set; }
+        public Nullable<bool> ESTADO { get; set; }
     
         public virtual COMBUSTIBLE_VEHICULO COMBUSTIBLE_VEHICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
