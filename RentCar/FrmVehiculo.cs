@@ -26,7 +26,7 @@ namespace RentCar
             txtNumeroPlaca.Text = "";
             txtNombre.Text = "";
             //labelFechaCreacion.Visible = false;
-            //checkEstado.Checked = true;
+            chcEstado.Checked = true;
             btnSave.Text = "Guardar";
             btnDelete.Enabled = false;
             model.ID = 0;
@@ -37,7 +37,19 @@ namespace RentCar
             gridVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridVehiculo.DataSource = db.VEHICULO.ToList<VEHICULO>();
+                var items = db.VEHICULO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.DESCRIPCION,
+                        x.NUMERO_CHASIS,
+                        x.NUMERO_PLACA,
+                        MARCA = x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE,
+                        MODELO = x.MODELO_VEHICULO.NOMBRE,
+                        x.FECHA_CREACION,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridVehiculo.DataSource = items;
             }
         }
 
@@ -46,17 +58,26 @@ namespace RentCar
             using (DBEntities db = new DBEntities())
             {
                 //Fill comboModelo
-                dpModeloVehiculo.DataSource = db.MODELO_VEHICULO.ToList<MODELO_VEHICULO>();
+                var models = db.MODELO_VEHICULO
+                    .Where(x => x.ESTADO == true)
+                    .Select(
+                    x => new
+                    {
+                        x.ID,
+                        NOMBRE = x.MARCA_VEHICULO.NOMBRE + " - " + x.NOMBRE
+                    })
+                    .ToList();
+                dpModeloVehiculo.DataSource = models;
                 dpModeloVehiculo.DisplayMember = "NOMBRE";
                 dpModeloVehiculo.ValueMember = "ID";
 
                 //Fill comboTipoVehiculo
-                dpTipoVehiculo.DataSource = db.TIPO_VEHICULO.ToList<TIPO_VEHICULO>();
+                dpTipoVehiculo.DataSource = db.TIPO_VEHICULO.Where(x => x.ESTADO == true).ToList();
                 dpTipoVehiculo.DisplayMember = "NOMBRE";
                 dpTipoVehiculo.ValueMember = "ID";
 
                 //Fill comboTipoCombustible
-                dpCombustible.DataSource = db.COMBUSTIBLE_VEHICULO.ToList<COMBUSTIBLE_VEHICULO>();
+                dpCombustible.DataSource = db.COMBUSTIBLE_VEHICULO.Where(x => x.ESTADO == true).ToList();
                 dpCombustible.DisplayMember = "NOMBRE";
                 dpCombustible.ValueMember = "ID";
             }
@@ -72,6 +93,7 @@ namespace RentCar
             model.ID_TIPO_COMBUSTIBLE = Convert.ToInt32(dpCombustible.SelectedValue);
             model.DESCRIPCION = txtNombre.Text.Trim();
             model.FECHA_CREACION = DateTime.Now;
+            model.ESTADO = Convert.ToBoolean(chcEstado.Checked);
 
             using (DBEntities db = new DBEntities())
             {
@@ -131,11 +153,11 @@ namespace RentCar
                 using (DBEntities db = new DBEntities())
                 {
                     model = db.VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
-                    dpModeloVehiculo.SelectedValue = Convert.ToInt32(model.MODELO_VEHICULO);
+                    dpModeloVehiculo.SelectedValue = Convert.ToInt32(model.ID_MODELO_VEHICULO);
                     txtNumeroChasis.Text = model.NUMERO_CHASIS;
                     txtNumeroMotor.Text = model.NUMERO_MOTOR;
                     txtNumeroPlaca.Text = model.NUMERO_PLACA;
-                    dpTipoVehiculo.SelectedValue = Convert.ToInt32(model.TIPO_VEHICULO);
+                    dpTipoVehiculo.SelectedValue = Convert.ToInt32(model.ID_TIPO_VEHICULO);
                     dpCombustible.SelectedValue = Convert.ToInt32(model.ID_TIPO_COMBUSTIBLE);
                     txtNombre.Text = model.DESCRIPCION;
                     dpFechaCreacion.Text = model.FECHA_CREACION.ToString();
@@ -150,9 +172,11 @@ namespace RentCar
             ClearForm();
             PopulateDataGridView();
             PopulateCombos();
-            this.WindowState = FormWindowState.Maximized;
         }
 
-      
+        private void dpModeloVehiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
