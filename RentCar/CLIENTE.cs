@@ -24,10 +24,10 @@ namespace RentCar
         public int ID { get; set; }
         public string NOMBRES { get; set; }
         public string APELLIDOS { get; set; }
-        public int CEDULA { get; set; }
+        public string CEDULA { get; set; }
         public string EMAIL { get; set; }
         public string TELEFONO { get; set; }
-        public int TARJETA_CREDITO { get; set; }
+        public string TARJETA_CREDITO { get; set; }
         public decimal LIMITE_CREDITO { get; set; }
         public Nullable<int> ID_TIPO_CLIENTE { get; set; }
         public Nullable<bool> ESTADO { get; set; }

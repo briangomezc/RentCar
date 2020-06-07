@@ -20,10 +20,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRES" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="APELLIDOS" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="CEDULA" Type="int" Nullable="false" />
+          <Property Name="CEDULA" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="EMAIL" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="TARJETA_CREDITO" Type="int" Nullable="false" />
+          <Property Name="TARJETA_CREDITO" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="LIMITE_CREDITO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ID_TIPO_CLIENTE" Type="int" />
           <Property Name="ESTADO" Type="bit" />
@@ -458,10 +458,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRES" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APELLIDOS" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CEDULA" Type="Int32" Nullable="false" />
+          <Property Name="CEDULA" Type="String" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TARJETA_CREDITO" Type="Int32" Nullable="false" />
+          <Property Name="TARJETA_CREDITO" Type="String" Nullable="false" />
           <Property Name="LIMITE_CREDITO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ID_TIPO_CLIENTE" Type="Int32" />
           <Property Name="ESTADO" Type="Boolean" />
