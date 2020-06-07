@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace RentCar
 {
-    public partial class Form1 : Form
+    public partial class FrmHome : Form
     {
         private Form activeForm = null;
 
-        public Form1()
+        public FrmHome()
         {
             InitializeComponent();
         }
@@ -76,6 +76,11 @@ namespace RentCar
         private void button6_Click(object sender, EventArgs e)
         {
             openChildForm(new FrmTanda());
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmModelo());
         }
     }
 }
