@@ -29,24 +29,30 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gridCliente = new System.Windows.Forms.DataGridView();
+            this.gridRenta = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.APELLIDOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TELEFONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LIMITE_CREDITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSPECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtMontoDia = new System.Windows.Forms.TextBox();
+            this.btnInspeccion = new System.Windows.Forms.Button();
+            this.dpFechaRenta = new System.Windows.Forms.DateTimePicker();
             this.lbCombustible = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtTarjetaCredito = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dpCliente = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dpEmpleado = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dpVehiculo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtCantidadDias = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.dpFechaIngreso = new System.Windows.Forms.DateTimePicker();
+            this.dpDevolucion = new System.Windows.Forms.DateTimePicker();
             this.lbFechaCreacion = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,23 +60,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtLimiteCredito = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gridCliente);
+            this.panel1.Controls.Add(this.gridRenta);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.label3);
@@ -83,26 +83,22 @@
             this.panel1.Size = new System.Drawing.Size(1068, 491);
             this.panel1.TabIndex = 0;
             // 
-            // gridCliente
+            // gridRenta
             // 
-            this.gridCliente.AllowUserToAddRows = false;
-            this.gridCliente.AllowUserToDeleteRows = false;
-            this.gridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridRenta.AllowUserToAddRows = false;
+            this.gridRenta.AllowUserToDeleteRows = false;
+            this.gridRenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.NOMBRES,
-            this.APELLIDOS,
-            this.CEDULA,
-            this.Email,
-            this.TELEFONO,
-            this.LIMITE_CREDITO,
-            this.ESTADO});
-            this.gridCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridCliente.Location = new System.Drawing.Point(0, 271);
-            this.gridCliente.Name = "gridCliente";
-            this.gridCliente.ReadOnly = true;
-            this.gridCliente.Size = new System.Drawing.Size(1068, 220);
-            this.gridCliente.TabIndex = 96;
+            this.INSPECCION});
+            this.gridRenta.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridRenta.Location = new System.Drawing.Point(0, 271);
+            this.gridRenta.Name = "gridRenta";
+            this.gridRenta.ReadOnly = true;
+            this.gridRenta.Size = new System.Drawing.Size(1068, 220);
+            this.gridRenta.TabIndex = 96;
+            this.gridRenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRenta_CellContentClick);
+            this.gridRenta.DoubleClick += new System.EventHandler(this.gridRenta_DoubleClick);
             // 
             // ID
             // 
@@ -112,59 +108,83 @@
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
             // 
-            // NOMBRES
+            // INSPECCION
             // 
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "Nombre";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
+            this.INSPECCION.HeaderText = "Inspeccion";
+            this.INSPECCION.Name = "INSPECCION";
+            this.INSPECCION.ReadOnly = true;
             // 
-            // APELLIDOS
+            // panel2
             // 
-            this.APELLIDOS.DataPropertyName = "APELLIDOS";
-            this.APELLIDOS.HeaderText = "Apellidos";
-            this.APELLIDOS.Name = "APELLIDOS";
-            this.APELLIDOS.ReadOnly = true;
+            this.panel2.Controls.Add(this.btnNuevo);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.txtTotal);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.txtMontoDia);
+            this.panel2.Controls.Add(this.btnInspeccion);
+            this.panel2.Controls.Add(this.dpFechaRenta);
+            this.panel2.Controls.Add(this.lbCombustible);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.dpCliente);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.dpEmpleado);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.dpVehiculo);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.txtDescripcion);
+            this.panel2.Controls.Add(this.txtCantidadDias);
+            this.panel2.Controls.Add(this.btnCancelar);
+            this.panel2.Controls.Add(this.btnDelete);
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.btnClose);
+            this.panel2.Controls.Add(this.dpDevolucion);
+            this.panel2.Controls.Add(this.lbFechaCreacion);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1068, 495);
+            this.panel2.TabIndex = 85;
             // 
-            // CEDULA
+            // label9
             // 
-            this.CEDULA.DataPropertyName = "CEDULA";
-            this.CEDULA.HeaderText = "Cedula";
-            this.CEDULA.Name = "CEDULA";
-            this.CEDULA.ReadOnly = true;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(361, 119);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(79, 13);
+            this.label9.TabIndex = 103;
+            this.label9.Text = "Monto por Dias";
             // 
-            // Email
+            // txtMontoDia
             // 
-            this.Email.DataPropertyName = "EMAIL";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
+            this.txtMontoDia.Location = new System.Drawing.Point(461, 114);
+            this.txtMontoDia.Name = "txtMontoDia";
+            this.txtMontoDia.Size = new System.Drawing.Size(155, 20);
+            this.txtMontoDia.TabIndex = 102;
+            this.txtMontoDia.TextChanged += new System.EventHandler(this.txtMontoDia_TextChanged);
+            this.txtMontoDia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoDia_KeyPress);
             // 
-            // TELEFONO
+            // btnInspeccion
             // 
-            this.TELEFONO.DataPropertyName = "TELEFONO";
-            this.TELEFONO.HeaderText = "Telefono";
-            this.TELEFONO.Name = "TELEFONO";
-            this.TELEFONO.ReadOnly = true;
+            this.btnInspeccion.Location = new System.Drawing.Point(812, 152);
+            this.btnInspeccion.Name = "btnInspeccion";
+            this.btnInspeccion.Size = new System.Drawing.Size(141, 23);
+            this.btnInspeccion.TabIndex = 101;
+            this.btnInspeccion.Text = "Crear Inspeccion";
+            this.btnInspeccion.UseVisualStyleBackColor = true;
             // 
-            // LIMITE_CREDITO
+            // dpFechaRenta
             // 
-            this.LIMITE_CREDITO.DataPropertyName = "LIMITE_CREDITO";
-            this.LIMITE_CREDITO.HeaderText = "Limite Credito";
-            this.LIMITE_CREDITO.Name = "LIMITE_CREDITO";
-            this.LIMITE_CREDITO.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
+            this.dpFechaRenta.Enabled = false;
+            this.dpFechaRenta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpFechaRenta.Location = new System.Drawing.Point(461, 17);
+            this.dpFechaRenta.Name = "dpFechaRenta";
+            this.dpFechaRenta.Size = new System.Drawing.Size(155, 20);
+            this.dpFechaRenta.TabIndex = 100;
             // 
             // lbCombustible
             // 
             this.lbCombustible.AutoSize = true;
-            this.lbCombustible.Location = new System.Drawing.Point(686, 22);
+            this.lbCombustible.Location = new System.Drawing.Point(664, 64);
             this.lbCombustible.Name = "lbCombustible";
             this.lbCombustible.Size = new System.Drawing.Size(63, 13);
             this.lbCombustible.TabIndex = 95;
@@ -174,54 +194,98 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(361, 121);
+            this.label5.Location = new System.Drawing.Point(361, 70);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
             this.label5.TabIndex = 94;
             this.label5.Text = "Cantidad de Dias";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // panel2
+            // label8
             // 
-            this.panel2.Controls.Add(this.dateTimePicker1);
-            this.panel2.Controls.Add(this.lbCombustible);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtLimiteCredito);
-            this.panel2.Controls.Add(this.txtTarjetaCredito);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.btnDelete);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.btnClose);
-            this.panel2.Controls.Add(this.dpFechaIngreso);
-            this.panel2.Controls.Add(this.lbFechaCreacion);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1068, 495);
-            this.panel2.TabIndex = 85;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(361, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 99;
+            this.label8.Text = "Fecha Renta";
             // 
-            // txtTarjetaCredito
+            // dpCliente
             // 
-            this.txtTarjetaCredito.Location = new System.Drawing.Point(461, 116);
-            this.txtTarjetaCredito.Name = "txtTarjetaCredito";
-            this.txtTarjetaCredito.Size = new System.Drawing.Size(155, 20);
-            this.txtTarjetaCredito.TabIndex = 85;
-            this.txtTarjetaCredito.TextChanged += new System.EventHandler(this.txtTarjetaCredito_TextChanged);
+            this.dpCliente.FormattingEnabled = true;
+            this.dpCliente.Location = new System.Drawing.Point(155, 116);
+            this.dpCliente.Name = "dpCliente";
+            this.dpCliente.Size = new System.Drawing.Size(155, 21);
+            this.dpCliente.TabIndex = 98;
             // 
-            // button4
+            // label7
             // 
-            this.button4.Location = new System.Drawing.Point(559, 197);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 25);
-            this.button4.TabIndex = 88;
-            this.button4.Text = "Cancelar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(55, 121);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 97;
+            this.label7.Text = "Tipo Cliente";
+            // 
+            // dpEmpleado
+            // 
+            this.dpEmpleado.FormattingEnabled = true;
+            this.dpEmpleado.Location = new System.Drawing.Point(155, 63);
+            this.dpEmpleado.Name = "dpEmpleado";
+            this.dpEmpleado.Size = new System.Drawing.Size(155, 21);
+            this.dpEmpleado.TabIndex = 96;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(55, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.TabIndex = 95;
+            this.label6.Text = "Tipo Empleado";
+            // 
+            // dpVehiculo
+            // 
+            this.dpVehiculo.FormattingEnabled = true;
+            this.dpVehiculo.Location = new System.Drawing.Point(155, 17);
+            this.dpVehiculo.Name = "dpVehiculo";
+            this.dpVehiculo.Size = new System.Drawing.Size(155, 21);
+            this.dpVehiculo.TabIndex = 94;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(55, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 93;
+            this.label4.Text = "Tipo Vehiculo";
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(771, 57);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(219, 75);
+            this.txtDescripcion.TabIndex = 91;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtLimiteCredito_TextChanged);
+            // 
+            // txtCantidadDias
+            // 
+            this.txtCantidadDias.Location = new System.Drawing.Point(461, 65);
+            this.txtCantidadDias.Name = "txtCantidadDias";
+            this.txtCantidadDias.Size = new System.Drawing.Size(155, 20);
+            this.txtCantidadDias.TabIndex = 85;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(559, 197);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 25);
+            this.btnCancelar.TabIndex = 88;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnDelete
             // 
@@ -240,6 +304,7 @@
             this.btnSave.TabIndex = 86;
             this.btnSave.Text = "Guarda";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -249,24 +314,26 @@
             this.btnClose.TabIndex = 85;
             this.btnClose.Text = "Volver";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // dpFechaIngreso
+            // dpDevolucion
             // 
-            this.dpFechaIngreso.Enabled = false;
-            this.dpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpFechaIngreso.Location = new System.Drawing.Point(461, 61);
-            this.dpFechaIngreso.Name = "dpFechaIngreso";
-            this.dpFechaIngreso.Size = new System.Drawing.Size(155, 20);
-            this.dpFechaIngreso.TabIndex = 81;
+            this.dpDevolucion.Enabled = false;
+            this.dpDevolucion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDevolucion.Location = new System.Drawing.Point(771, 17);
+            this.dpDevolucion.Name = "dpDevolucion";
+            this.dpDevolucion.Size = new System.Drawing.Size(155, 20);
+            this.dpDevolucion.TabIndex = 81;
+            this.dpDevolucion.ValueChanged += new System.EventHandler(this.dpDevolucion_ValueChanged);
             // 
             // lbFechaCreacion
             // 
             this.lbFechaCreacion.AutoSize = true;
-            this.lbFechaCreacion.Location = new System.Drawing.Point(361, 68);
+            this.lbFechaCreacion.Location = new System.Drawing.Point(664, 20);
             this.lbFechaCreacion.Name = "lbFechaCreacion";
-            this.lbFechaCreacion.Size = new System.Drawing.Size(75, 13);
+            this.lbFechaCreacion.Size = new System.Drawing.Size(94, 13);
             this.lbFechaCreacion.TabIndex = 80;
-            this.lbFechaCreacion.Text = "Fecha Ingreso";
+            this.lbFechaCreacion.Text = "Fecha Devolucion";
             // 
             // txtEmail
             // 
@@ -316,83 +383,31 @@
             this.label1.TabIndex = 86;
             this.label1.Text = "Nombre";
             // 
-            // comboBox1
+            // label10
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(155, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 21);
-            this.comboBox1.TabIndex = 94;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(361, 160);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 105;
+            this.label10.Text = "Total";
             // 
-            // label4
+            // txtTotal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 93;
-            this.label4.Text = "Tipo Vehiculo";
+            this.txtTotal.Location = new System.Drawing.Point(461, 155);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(155, 20);
+            this.txtTotal.TabIndex = 104;
             // 
-            // comboBox2
+            // btnNuevo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(155, 63);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 21);
-            this.comboBox2.TabIndex = 96;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(55, 68);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 13);
-            this.label6.TabIndex = 95;
-            this.label6.Text = "Tipo Empleado";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(155, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(155, 21);
-            this.comboBox3.TabIndex = 98;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(55, 121);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
-            this.label7.TabIndex = 97;
-            this.label7.Text = "Tipo Cliente";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(461, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(155, 20);
-            this.dateTimePicker1.TabIndex = 100;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(361, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 13);
-            this.label8.TabIndex = 99;
-            this.label8.Text = "Fecha Ingreso";
-            // 
-            // txtLimiteCredito
-            // 
-            this.txtLimiteCredito.Location = new System.Drawing.Point(755, 9);
-            this.txtLimiteCredito.Multiline = true;
-            this.txtLimiteCredito.Name = "txtLimiteCredito";
-            this.txtLimiteCredito.Size = new System.Drawing.Size(219, 75);
-            this.txtLimiteCredito.TabIndex = 91;
-            this.txtLimiteCredito.TextChanged += new System.EventHandler(this.txtLimiteCredito_TextChanged);
+            this.btnNuevo.Location = new System.Drawing.Point(878, 199);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 106;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // FromRenta
             // 
@@ -402,9 +417,10 @@
             this.Controls.Add(this.panel1);
             this.Name = "FromRenta";
             this.Text = "FromRenta";
+            this.Load += new System.EventHandler(this.FromRenta_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -414,24 +430,16 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView gridCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn APELLIDOS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CEDULA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LIMITE_CREDITO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.DataGridView gridRenta;
         private System.Windows.Forms.Label lbCombustible;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtTarjetaCredito;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtCantidadDias;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.DateTimePicker dpFechaIngreso;
+        private System.Windows.Forms.DateTimePicker dpDevolucion;
         private System.Windows.Forms.Label lbFechaCreacion;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label3;
@@ -439,14 +447,25 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dpFechaRenta;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox dpCliente;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox dpEmpleado;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox dpVehiculo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtLimiteCredito;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VEHICULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMPLEADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INSPECCION;
+        private System.Windows.Forms.Button btnInspeccion;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMontoDia;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }
