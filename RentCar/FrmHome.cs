@@ -87,5 +87,10 @@ namespace RentCar
         {
             openChildForm(new FrmCliente());
         }
+
+        private void logOut_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

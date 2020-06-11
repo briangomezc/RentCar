@@ -109,6 +109,12 @@
     <Compile Include="FrmEmpleado.Designer.cs">
       <DependentUpon>FrmEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMarcaVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,12 @@
     </Compile>
     <Compile Include="FrmTipo_Vehiculo.Designer.cs">
       <DependentUpon>FrmTipo_Vehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FromRenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromRenta.Designer.cs">
+      <DependentUpon>FromRenta.cs</DependentUpon>
     </Compile>
     <Compile Include="INSPECCION.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
@@ -183,6 +195,9 @@
     <EmbeddedResource Include="FrmEmpleado.resx">
       <DependentUpon>FrmEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMarcaVehiculo.resx">
       <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +213,9 @@
     <EmbeddedResource Include="FrmTipo_Vehiculo.resx">
       <DependentUpon>FrmTipo_Vehiculo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FromRenta.resx">
+      <DependentUpon>FromRenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -206,6 +224,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="DBModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -239,6 +258,8 @@
       <DependentUpon>DBModels.edmx</DependentUpon>
       <LastGenOutput>DBModels.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\form-wizard-login1.jpg" />
+    <None Include="Resources\form-wizard-login.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
