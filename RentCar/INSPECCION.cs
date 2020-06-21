@@ -32,14 +32,14 @@ namespace RentCar
         public Nullable<bool> TIENE_ROTURA_CRISTAL { get; set; }
         public System.DateTime FECHA_CREACION { get; set; }
         public Nullable<int> ID_ESTADO_INSPECCION { get; set; }
+        public string CODIGO { get; set; }
+        public Nullable<bool> GOMA_TRASERA_DERECHA { get; set; }
+        public Nullable<bool> GOMA_TRASERA_IZQUIERDA { get; set; }
+        public Nullable<bool> GOMA_DELANTERA_DERECHA { get; set; }
+        public Nullable<bool> GOMA_DELANTERA_IZQUIERDA { get; set; }
     
-        public virtual CANTIDAD_COMBUSTIBLE CANTIDAD_COMBUSTIBLE { get; set; }
-        public virtual CLIENTE CLIENTE { get; set; }
-        public virtual EMPLEADO EMPLEADO { get; set; }
-        public virtual ESTADO_INSPECCION ESTADO_INSPECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSPECCION_GOMAS> INSPECCION_GOMAS { get; set; }
-        public virtual VEHICULO VEHICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENTA> RENTA { get; set; }
     }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.logOut = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -45,13 +47,13 @@
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOut = new System.Windows.Forms.Button();
             this.panelContainer.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelContainer
             // 
+            this.panelContainer.Controls.Add(this.button9);
             this.panelContainer.Controls.Add(this.logOut);
             this.panelContainer.Controls.Add(this.button8);
             this.panelContainer.Controls.Add(this.button7);
@@ -67,6 +69,26 @@
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(956, 450);
             this.panelContainer.TabIndex = 0;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(706, 243);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 11;
+            this.button9.Text = "button9";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // logOut
+            // 
+            this.logOut.Location = new System.Drawing.Point(854, 27);
+            this.logOut.Name = "logOut";
+            this.logOut.Size = new System.Drawing.Size(75, 23);
+            this.logOut.TabIndex = 10;
+            this.logOut.Text = "Salir";
+            this.logOut.UseVisualStyleBackColor = true;
+            this.logOut.Click += new System.EventHandler(this.logOut_Click);
             // 
             // button8
             // 
@@ -104,7 +126,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 6;
-            this.button5.Text = "button5";
+            this.button5.Text = "Combustible";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -114,7 +136,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 5;
-            this.button4.Text = "button4";
+            this.button4.Text = "Empleado";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -124,7 +146,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
+            this.button3.Text = "Vehiculo";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -134,7 +156,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
+            this.button2.Text = "Marca";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -144,7 +166,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Tipo Vehiculo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -209,16 +231,6 @@
             this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 20);
             this.aToolStripMenuItem.Text = "a";
             // 
-            // logOut
-            // 
-            this.logOut.Location = new System.Drawing.Point(854, 27);
-            this.logOut.Name = "logOut";
-            this.logOut.Size = new System.Drawing.Size(75, 23);
-            this.logOut.TabIndex = 10;
-            this.logOut.Text = "Salir";
-            this.logOut.UseVisualStyleBackColor = true;
-            this.logOut.Click += new System.EventHandler(this.logOut_Click);
-            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +240,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmHome";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmHome_Load);
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -256,6 +269,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button logOut;
+        private System.Windows.Forms.Button button9;
     }
 }
 

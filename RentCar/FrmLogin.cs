@@ -52,37 +52,40 @@ namespace RentCar
            
             return true;
         }
-        
+
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            DBEntities db = new DBEntities();
-
-            if (txtUsuario.Text != string.Empty && txtPassword.Text != string.Empty)
+            if (ValidateData())
             {
-                var userExist = db.EMPLEADO.FirstOrDefault(p => p.NOMBRES.Equals(txtUsuario.Text));
-
-                if (userExist != null)
+                btn_Login.Enabled = false;
+                btn_Login.Text = "Por favor, espere";
+                using (DBEntities db = new DBEntities())
                 {
-                    if (userExist.CLAVE.Equals(txtPassword.Text))
+                    var empleado = db.EMPLEADO.FirstOrDefault(x => x.EMAIL.Equals(txtUsuario.Text.Trim().ToLower()));
+
+                    if (empleado != null)
                     {
-                        MessageBox.Show("Bienvenido " + userExist.NOMBRES);
-                        FrmHome frm = new FrmHome();
-                        frm.Show();
-                        this.Hide();
+                        if (empleado.CLAVE.Equals(txtPassword.Text.Trim()))
+                        {
+                            FrmHome frm = new FrmHome();
+                            frm.EMPLEADO = empleado;
+                            this.Hide();
+                            frm.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("La clave no es correcta");
+                            btn_Login.Text = "Login";
+                            btn_Login.Enabled = true;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Password incorrecto");
+                        MessageBox.Show("Usuario no encontrado");
+                        btn_Login.Text = "Login";
+                        btn_Login.Enabled = true;
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Usuario no encontrado");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Inserte datos en las filas");
             }
         }
     }

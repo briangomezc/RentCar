@@ -29,7 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dpMarca = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.gridModelo = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -37,12 +43,6 @@
             this.chcEstado = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.dpMarca = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridModelo)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +64,24 @@
             this.panel1.Size = new System.Drawing.Size(799, 447);
             this.panel1.TabIndex = 0;
             // 
+            // dpMarca
+            // 
+            this.dpMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dpMarca.FormattingEnabled = true;
+            this.dpMarca.Location = new System.Drawing.Point(109, 35);
+            this.dpMarca.Name = "dpMarca";
+            this.dpMarca.Size = new System.Drawing.Size(155, 21);
+            this.dpMarca.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Marca Vehículo";
+            // 
             // gridModelo
             // 
             this.gridModelo.AllowUserToDeleteRows = false;
@@ -81,6 +99,36 @@
             this.gridModelo.TabIndex = 23;
             this.gridModelo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCombustibleVehiculo_CellContentClick);
             this.gridModelo.DoubleClick += new System.EventHandler(this.gridModelo_DoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRE
+            // 
+            this.NOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRE.DataPropertyName = "NOMBRE";
+            this.NOMBRE.HeaderText = "Nombre";
+            this.NOMBRE.Name = "NOMBRE";
+            this.NOMBRE.ReadOnly = true;
+            // 
+            // Marca
+            // 
+            this.Marca.DataPropertyName = "MARCA";
+            this.Marca.HeaderText = "Marca Vehiculo";
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // button4
             // 
@@ -147,53 +195,6 @@
             this.btnClose.Text = "Volver";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // dpMarca
-            // 
-            this.dpMarca.FormattingEnabled = true;
-            this.dpMarca.Location = new System.Drawing.Point(109, 35);
-            this.dpMarca.Name = "dpMarca";
-            this.dpMarca.Size = new System.Drawing.Size(155, 21);
-            this.dpMarca.TabIndex = 41;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 38);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Marca Vehículo";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRE
-            // 
-            this.NOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRE.DataPropertyName = "NOMBRE";
-            this.NOMBRE.HeaderText = "Nombre";
-            this.NOMBRE.Name = "NOMBRE";
-            this.NOMBRE.ReadOnly = true;
-            // 
-            // Marca
-            // 
-            this.Marca.DataPropertyName = "MARCA";
-            this.Marca.HeaderText = "Marca Vehiculo";
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
             // 
             // FrmModelo
             // 

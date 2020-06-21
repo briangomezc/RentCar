@@ -15,13 +15,13 @@ namespace RentCar
     public partial class INSPECCION_GOMAS
     {
         public int ID { get; set; }
+        public string CODE { get; set; }
         public Nullable<int> ID_INSPECCION { get; set; }
         public Nullable<bool> GOMA_TRASERA_DERECHA { get; set; }
         public Nullable<bool> GOMA_TRASERA_IZQUIERDA { get; set; }
         public Nullable<bool> GOMA_DELANTERA_DERECHA { get; set; }
         public Nullable<bool> GOME_DELANTERA_IZQUIERDA { get; set; }
         public string DESCRIPCION { get; set; }
-        public string CODE { get; set; }
     
         public virtual INSPECCION INSPECCION { get; set; }
     }

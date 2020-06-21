@@ -14,17 +14,8 @@ namespace RentCar
     
     public partial class CANTIDAD_COMBUSTIBLE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CANTIDAD_COMBUSTIBLE()
-        {
-            this.INSPECCION = new HashSet<INSPECCION>();
-        }
-    
         public int ID { get; set; }
         public string DESCRIPCION { get; set; }
         public Nullable<bool> ESTADO { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECCION> INSPECCION { get; set; }
     }
 }

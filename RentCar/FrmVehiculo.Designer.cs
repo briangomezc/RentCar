@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.gridVehiculo = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMERO_CHASIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMERO_PLACA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA_CREACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -50,14 +58,6 @@
             this.dpCombustible = new System.Windows.Forms.ComboBox();
             this.lbCombustible = new System.Windows.Forms.Label();
             this.chcEstado = new System.Windows.Forms.CheckBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMERO_CHASIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMERO_PLACA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHA_CREACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +82,66 @@
             this.gridVehiculo.Size = new System.Drawing.Size(905, 223);
             this.gridVehiculo.TabIndex = 23;
             this.gridVehiculo.DoubleClick += new System.EventHandler(this.gridTipoCliente_DoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "DESCRIPCION";
+            this.Nombre.HeaderText = "Descripcion";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // NUMERO_CHASIS
+            // 
+            this.NUMERO_CHASIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NUMERO_CHASIS.DataPropertyName = "NUMERO_CHASIS";
+            this.NUMERO_CHASIS.HeaderText = "Numero Chasis";
+            this.NUMERO_CHASIS.Name = "NUMERO_CHASIS";
+            this.NUMERO_CHASIS.ReadOnly = true;
+            // 
+            // NUMERO_PLACA
+            // 
+            this.NUMERO_PLACA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NUMERO_PLACA.DataPropertyName = "NUMERO_PLACA";
+            this.NUMERO_PLACA.HeaderText = "Numero Placa";
+            this.NUMERO_PLACA.Name = "NUMERO_PLACA";
+            this.NUMERO_PLACA.ReadOnly = true;
+            // 
+            // MARCA
+            // 
+            this.MARCA.DataPropertyName = "MARCA";
+            this.MARCA.HeaderText = "Tipo Vehiculo";
+            this.MARCA.Name = "MARCA";
+            this.MARCA.ReadOnly = true;
+            // 
+            // MODELO
+            // 
+            this.MODELO.DataPropertyName = "MODELO";
+            this.MODELO.HeaderText = "Modelo Vehiculo";
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            // 
+            // FECHA_CREACION
+            // 
+            this.FECHA_CREACION.DataPropertyName = "FECHA_CREACION";
+            this.FECHA_CREACION.HeaderText = "Fecha de Creacion";
+            this.FECHA_CREACION.Name = "FECHA_CREACION";
+            this.FECHA_CREACION.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // button4
             // 
@@ -215,6 +275,7 @@
             // 
             // dpModeloVehiculo
             // 
+            this.dpModeloVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dpModeloVehiculo.FormattingEnabled = true;
             this.dpModeloVehiculo.Location = new System.Drawing.Point(726, 4);
             this.dpModeloVehiculo.Name = "dpModeloVehiculo";
@@ -266,66 +327,6 @@
             this.chcEstado.TabIndex = 46;
             this.chcEstado.Text = "Estado";
             this.chcEstado.UseVisualStyleBackColor = true;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.DataPropertyName = "DESCRIPCION";
-            this.Nombre.HeaderText = "Descripcion";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // NUMERO_CHASIS
-            // 
-            this.NUMERO_CHASIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NUMERO_CHASIS.DataPropertyName = "NUMERO_CHASIS";
-            this.NUMERO_CHASIS.HeaderText = "Numero Chasis";
-            this.NUMERO_CHASIS.Name = "NUMERO_CHASIS";
-            this.NUMERO_CHASIS.ReadOnly = true;
-            // 
-            // NUMERO_PLACA
-            // 
-            this.NUMERO_PLACA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NUMERO_PLACA.DataPropertyName = "NUMERO_PLACA";
-            this.NUMERO_PLACA.HeaderText = "Numero Placa";
-            this.NUMERO_PLACA.Name = "NUMERO_PLACA";
-            this.NUMERO_PLACA.ReadOnly = true;
-            // 
-            // MARCA
-            // 
-            this.MARCA.DataPropertyName = "MARCA";
-            this.MARCA.HeaderText = "Tipo Vehiculo";
-            this.MARCA.Name = "MARCA";
-            this.MARCA.ReadOnly = true;
-            // 
-            // MODELO
-            // 
-            this.MODELO.DataPropertyName = "MODELO";
-            this.MODELO.HeaderText = "Modelo Vehiculo";
-            this.MODELO.Name = "MODELO";
-            this.MODELO.ReadOnly = true;
-            // 
-            // FECHA_CREACION
-            // 
-            this.FECHA_CREACION.DataPropertyName = "FECHA_CREACION";
-            this.FECHA_CREACION.HeaderText = "Fecha de Creacion";
-            this.FECHA_CREACION.Name = "FECHA_CREACION";
-            this.FECHA_CREACION.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
             // 
             // FrmVehiculo
             // 

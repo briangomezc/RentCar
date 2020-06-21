@@ -29,11 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chcEstado = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.APELLIDOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_TANDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA_INGRESO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dpFechaCreacion = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dpFechaIngreso = new System.Windows.Forms.DateTimePicker();
@@ -50,14 +58,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.APELLIDOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_TANDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHA_INGRESO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chcEstado = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,16 @@
             this.panel1.Size = new System.Drawing.Size(923, 450);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // chcEstado
+            // 
+            this.chcEstado.AutoSize = true;
+            this.chcEstado.Location = new System.Drawing.Point(736, 107);
+            this.chcEstado.Name = "chcEstado";
+            this.chcEstado.Size = new System.Drawing.Size(59, 17);
+            this.chcEstado.TabIndex = 67;
+            this.chcEstado.Text = "Estado";
+            this.chcEstado.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -153,6 +163,56 @@
             this.dataGridView1.TabIndex = 62;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRES
+            // 
+            this.NOMBRES.DataPropertyName = "NOMBRES";
+            this.NOMBRES.HeaderText = "NOMBRES";
+            this.NOMBRES.Name = "NOMBRES";
+            this.NOMBRES.ReadOnly = true;
+            // 
+            // APELLIDOS
+            // 
+            this.APELLIDOS.DataPropertyName = "APELLIDOS";
+            this.APELLIDOS.HeaderText = "APELLIDOS";
+            this.APELLIDOS.Name = "APELLIDOS";
+            this.APELLIDOS.ReadOnly = true;
+            // 
+            // ID_TANDA
+            // 
+            this.ID_TANDA.DataPropertyName = "TANDA";
+            this.ID_TANDA.HeaderText = "TANDA";
+            this.ID_TANDA.Name = "ID_TANDA";
+            this.ID_TANDA.ReadOnly = true;
+            // 
+            // ID_TIPO_EMPLEADO
+            // 
+            this.ID_TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
+            this.ID_TIPO_EMPLEADO.HeaderText = "TIPO EMPLEADO";
+            this.ID_TIPO_EMPLEADO.Name = "ID_TIPO_EMPLEADO";
+            this.ID_TIPO_EMPLEADO.ReadOnly = true;
+            // 
+            // FECHA_INGRESO
+            // 
+            this.FECHA_INGRESO.DataPropertyName = "FECHA_INGRESO";
+            this.FECHA_INGRESO.HeaderText = "Fecha Ingreso";
+            this.FECHA_INGRESO.Name = "FECHA_INGRESO";
+            this.FECHA_INGRESO.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "ESTADO";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
+            // 
             // dpFechaCreacion
             // 
             this.dpFechaCreacion.Enabled = false;
@@ -191,6 +251,7 @@
             // 
             // dpTipoEmpleado
             // 
+            this.dpTipoEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dpTipoEmpleado.FormattingEnabled = true;
             this.dpTipoEmpleado.Location = new System.Drawing.Point(461, 99);
             this.dpTipoEmpleado.Name = "dpTipoEmpleado";
@@ -210,6 +271,7 @@
             // 
             // dpTanda
             // 
+            this.dpTanda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dpTanda.FormattingEnabled = true;
             this.dpTanda.Location = new System.Drawing.Point(461, 58);
             this.dpTanda.Name = "dpTanda";
@@ -298,66 +360,6 @@
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 46;
             this.label1.Text = "Nombre";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "NOMBRES";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
-            // 
-            // APELLIDOS
-            // 
-            this.APELLIDOS.DataPropertyName = "APELLIDOS";
-            this.APELLIDOS.HeaderText = "APELLIDOS";
-            this.APELLIDOS.Name = "APELLIDOS";
-            this.APELLIDOS.ReadOnly = true;
-            // 
-            // ID_TANDA
-            // 
-            this.ID_TANDA.DataPropertyName = "TANDA";
-            this.ID_TANDA.HeaderText = "TANDA";
-            this.ID_TANDA.Name = "ID_TANDA";
-            this.ID_TANDA.ReadOnly = true;
-            // 
-            // ID_TIPO_EMPLEADO
-            // 
-            this.ID_TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
-            this.ID_TIPO_EMPLEADO.HeaderText = "TIPO EMPLEADO";
-            this.ID_TIPO_EMPLEADO.Name = "ID_TIPO_EMPLEADO";
-            this.ID_TIPO_EMPLEADO.ReadOnly = true;
-            // 
-            // FECHA_INGRESO
-            // 
-            this.FECHA_INGRESO.DataPropertyName = "FECHA_INGRESO";
-            this.FECHA_INGRESO.HeaderText = "Fecha Ingreso";
-            this.FECHA_INGRESO.Name = "FECHA_INGRESO";
-            this.FECHA_INGRESO.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "ESTADO";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
-            // 
-            // chcEstado
-            // 
-            this.chcEstado.AutoSize = true;
-            this.chcEstado.Location = new System.Drawing.Point(736, 107);
-            this.chcEstado.Name = "chcEstado";
-            this.chcEstado.Size = new System.Drawing.Size(59, 17);
-            this.chcEstado.TabIndex = 67;
-            this.chcEstado.Text = "Estado";
-            this.chcEstado.UseVisualStyleBackColor = true;
             // 
             // FrmEmpleado
             // 

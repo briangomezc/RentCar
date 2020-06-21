@@ -17,7 +17,6 @@ namespace RentCar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VEHICULO()
         {
-            this.INSPECCION = new HashSet<INSPECCION>();
             this.RENTA = new HashSet<RENTA>();
         }
     
@@ -33,8 +32,6 @@ namespace RentCar
         public Nullable<bool> ESTADO { get; set; }
     
         public virtual COMBUSTIBLE_VEHICULO COMBUSTIBLE_VEHICULO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECCION> INSPECCION { get; set; }
         public virtual MODELO_VEHICULO MODELO_VEHICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENTA> RENTA { get; set; }

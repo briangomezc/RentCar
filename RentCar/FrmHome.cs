@@ -13,6 +13,7 @@ namespace RentCar
     public partial class FrmHome : Form
     {
         private Form activeForm = null;
+        public EMPLEADO EMPLEADO = null;
 
         public FrmHome()
         {
@@ -92,5 +93,16 @@ namespace RentCar
         {
             Application.Exit();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FromRenta(EMPLEADO));
+        }
+
+        private void FrmHome_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
     }
 }

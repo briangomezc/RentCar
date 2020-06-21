@@ -14,30 +14,49 @@ namespace RentCar
     {
         RENTA model = new RENTA();
 
-        public static int VEHICULO = 0;
-        public static int CLIENTE = 0;
-        public static int EMPLEADO = 0;
+        private EMPLEADO empleado = null;
+        private RENTA renta = new RENTA();
+        private INSPECCION inspeccion = new INSPECCION();
 
-        public FromRenta()
+        public FromRenta(EMPLEADO Empleado = null)
         {
             InitializeComponent();
+            empleado = Empleado;
         }
 
         private void ClearForm()
         {
-            btnInspeccion.Text = "Crear Inspeccion";
-            //TxFechaRenta.Text = "";
-            //TxFechaRenta.Text = DateTime.Now.ToString();
-            //DPFechaDevolucion.MinDate = DateTime.Now;
-            //TxCantidadDias.Text = "";
-            //TxMontoDia.Text = "";
-            //TxDescripcion.Text = "";
-            btnSave.Text = "Guardar";
+            dpCliente.Enabled = false;
+            dpVehiculo.Enabled = false;
+            txtTotal.Text = "0";
+            dpFechaRenta.Enabled = false;
+            dpDevolucion.Enabled = false;
+            txtDescripcion.Text = "";
+            txtDescripcion.Enabled = false;
+            txtCantidadDias.Text = "";
+            txtCantidadDias.Enabled = false;
+            txtMontoDia.Text = "";
+            txtMontoDia.Enabled = false;
+            chcEstado.Enabled = false;
+            txtCodigo.Enabled = false;
+
+            //Inspeccion
+            chcLlantaDerechaD.Enabled = false;
+            chcLlantaIzquierdaD.Enabled = false;
+            chcLlantaDerechaT.Enabled = false;
+            chcLlantaIzquierdaT.Enabled = false;
+            chcTieneGoma.Enabled = false;
+            chcRayadura.Enabled = false;
+            chcTieneGato.Enabled = false;
+            chcTieneRoturaCristal.Enabled = false;
+            dpCantidaCombustible.Enabled = false;
+
+            //Botones
             btnSave.Enabled = false;
-            btnInspeccion.Enabled = false;
-            btnInspeccion.Text = "Crear Inspeccion";
-            model.ID = 0;
-            model.ID_INSPECCION = 0;
+            btnCancelar.Enabled = false;
+            btnNuevo.Enabled = true;
+            renta.ID = 0;
+            inspeccion.ID = 0;
         }
 
         private bool ValidateData()
@@ -46,13 +65,6 @@ namespace RentCar
             {
                 dpVehiculo.Focus();
                 MessageBox.Show("Debe seleccionar un vehiculo");
-                return false;
-            }
-
-            if (dpEmpleado.SelectedIndex == -1)
-            {
-                dpEmpleado.Focus();
-                MessageBox.Show("Debe seleccionar un empleado");
                 return false;
             }
 
@@ -94,28 +106,68 @@ namespace RentCar
 
         }
 
-    
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateData())
             {
-                model.ID_VEHICULO = Convert.ToInt32(dpVehiculo.SelectedValue);
-                model.ID_EMPLEADO = Convert.ToInt32(dpEmpleado.SelectedValue);
-                model.ID_CLIENTE = Convert.ToInt32(dpCliente.SelectedValue);
-                model.FECHA_RENTA = Convert.ToDateTime(dpFechaRenta.Text);
-                model.FECHA_DEVOLUCION = Convert.ToDateTime(dpDevolucion.Value);
-                model.CANTIDAD_DIAS = Convert.ToInt32(txtCantidadDias.Text);
-                model.MONTO_DIA = Convert.ToInt32(txtMontoDia.Text.Trim());
-                model.DESCRIPCION = txtDescripcion.Text.Trim();
-
                 using (DBEntities db = new DBEntities())
                 {
-                    db.RENTA.Add(model);
+                    if (renta.ID > 0)
+                    {
+                        renta.ID_CLIENTE = Convert.ToInt32(dpCliente.SelectedValue);
+                        renta.ID_VEHICULO = Convert.ToInt32(dpVehiculo.SelectedValue);
+                        renta.FECHA_RENTA = dpFechaRenta.Value;
+                        renta.FECHA_DEVOLUCION = dpDevolucion.Value;
+                        renta.CANTIDAD_DIAS = Convert.ToInt32(txtCantidadDias.Text);
+                        renta.MONTO_DIA = Convert.ToDecimal(txtMontoDia.Text.Trim());
+                        renta.DESCRIPCION = txtDescripcion.Text.Trim();
+                        renta.ESTADO = chcEstado.Checked;
+
+                        db.Entry(renta).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        MessageBox.Show("Renta Actualizada Existosamente");
+                        ClearForm();
+                        PopulateDataGridView();
+                    }
+                    else
+                    {
+                        inspeccion.ID_VEHICULO = Convert.ToInt32(dpVehiculo.SelectedValue);
+                        inspeccion.CODIGO = GenerateCode();
+                        inspeccion.TIENE_RAYADURAS = chcRayadura.Checked;
+                        inspeccion.ID_CANTIDAD_COMBUSTIBLE = Convert.ToInt32(dpCantidaCombustible.SelectedValue);
+                        inspeccion.TIENE_GATO = chcTieneGato.Checked;
+                        inspeccion.TIENE_ROTURA_CRISTAL = chcTieneRoturaCristal.Checked;
+                        inspeccion.FECHA_CREACION = DateTime.Now;
+                        inspeccion.GOMA_DELANTERA_DERECHA = chcLlantaDerechaD.Checked;
+                        inspeccion.GOMA_DELANTERA_IZQUIERDA = chcLlantaIzquierdaD.Checked;
+                        inspeccion.GOMA_TRASERA_DERECHA = chcLlantaDerechaT.Checked;
+                        inspeccion.GOMA_TRASERA_IZQUIERDA = chcLlantaIzquierdaT.Checked;
+                        inspeccion.TIENE_GOMA = chcTieneGoma.Checked;
+
+                        db.INSPECCION.Add(inspeccion);
+
+                        //Renta
+                        renta.ID_INSPECCION = inspeccion.ID;
+                        renta.ID_EMPLEADO = empleado.ID;
+                        renta.ID_CLIENTE = Convert.ToInt32(dpCliente.SelectedValue);
+                        renta.ID_VEHICULO = Convert.ToInt32(dpVehiculo.SelectedValue);
+                        renta.FECHA_RENTA = dpFechaRenta.Value;
+                        renta.FECHA_DEVOLUCION = dpDevolucion.Value;
+                        renta.FECHA_CREACION = DateTime.Now;
+                        renta.CANTIDAD_DIAS = Convert.ToInt32(txtCantidadDias.Text);
+                        renta.MONTO_DIA = Convert.ToDecimal(txtMontoDia.Text.Trim());
+                        renta.DESCRIPCION = txtDescripcion.Text.Trim();
+                        renta.CODIGO = GenerateCode();
+                        renta.ESTADO = false;
+                        db.RENTA.Add(renta);
+
+                    }
+
                     db.SaveChanges();
-                    MessageBox.Show("Renta creada exitosamente");
+                    MessageBox.Show("Renta Creada Existosamente");
                     ClearForm();
-                    PopulateCombos();
                     PopulateDataGridView();
                 }
             }
@@ -138,18 +190,19 @@ namespace RentCar
 
         private void PopulateDataGridView()
         {
-            gridRenta.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
+                gridRenta.AutoGenerateColumns = false;
                 var items = db.RENTA.Select(
                     x => new
                     {
                         x.ID,
                         VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE + " " + x.VEHICULO.MODELO_VEHICULO.NOMBRE,
                         CLIENTE = x.CLIENTE.NOMBRES + " " + x.CLIENTE.APELLIDOS,
-                        EMPLEADO = x.EMPLEADO.NOMBRES + " " + x.EMPLEADO.APELLIDOS,
-                        INSPECCION = x.INSPECCION.CODIGO
-                    }).ToList();
+                        x.CODIGO,
+                        ESTADO = x.ESTADO == true ? "Entregado" : "Sin Entregar"
+                    })
+                    .ToList();
                 gridRenta.DataSource = items;
             }
         }
@@ -171,20 +224,7 @@ namespace RentCar
                 dpVehiculo.DataSource = vehiculos;
                 dpVehiculo.DisplayMember = "VEHICULO";
                 dpVehiculo.ValueMember = "ID";
-
-                //Empleados
-                var empleados = db.EMPLEADO
-                    .Where(x => x.ESTADO == true)
-                    .Select(
-                    x => new
-                    {
-                        x.ID,
-                        EMPLEADO = x.NOMBRES + " " + x.APELLIDOS
-                    })
-                    .ToList();
-                dpEmpleado.DataSource = empleados;
-                dpEmpleado.DisplayMember = "EMPLEADO";
-                dpEmpleado.ValueMember = "ID";
+                
 
                 //Clientes
                 var clientes = db.CLIENTE
@@ -199,8 +239,24 @@ namespace RentCar
                 dpCliente.DataSource = clientes;
                 dpCliente.DisplayMember = "CLIENTE";
                 dpCliente.ValueMember = "ID";
+
+                //Combustible
+                var combustibles = db.CANTIDAD_COMBUSTIBLE
+                    .Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.DESCRIPCION
+                    })
+                    .ToList();
+                dpCantidaCombustible.DataSource = combustibles;
+                dpCantidaCombustible.DisplayMember = "DESCRIPCION";
+                dpCantidaCombustible.ValueMember = "ID";
             }
+
+
         }
+
         public void GetIdInspeccion(int ID_INSPECCION)
         {
             model.ID_INSPECCION = ID_INSPECCION;
@@ -217,7 +273,7 @@ namespace RentCar
         private void txtMontoDia_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Verifica que la tecla presionada es solo numerica
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -225,26 +281,25 @@ namespace RentCar
 
         private void dpDevolucion_ValueChanged(object sender, EventArgs e)
         {
-            DateTime StartDate = DateTime.Now;
-            DateTime EndDate = dpDevolucion.Value;
-
-            txtCantidadDias.Text = Math.Round((EndDate - StartDate).TotalDays).ToString();
-
+            SetCantidadDias();
             SetTotalAPagar();
         }
 
         private void SetTotalAPagar()
         {
-            if (txtCantidadDias.Text.Length > 0 && txtMontoDia.Text.Length > 0)
+            decimal total = 0;
+
+            if (txtMontoDia.Text.Length > 0)
             {
-                decimal total = Convert.ToInt32(txtCantidadDias.Text) * Convert.ToDecimal(txtMontoDia.Text);
-                txtTotal.Text = total.ToString();
+                int CantidadDias = Convert.ToInt32(txtCantidadDias.Text);
+                decimal MontoXDia = Convert.ToInt32(txtMontoDia.Text);
+
+                total = CantidadDias * MontoXDia;
             }
-            else
-            {
-                txtTotal.Text = "";
-            }
+
+            txtTotal.Text = total.ToString();
         }
+
 
         private void txtMontoDia_TextChanged(object sender, EventArgs e)
         {
@@ -255,58 +310,210 @@ namespace RentCar
         {
             if (gridRenta.CurrentRow.Index != -1)
             {
-                model.ID = Convert.ToInt32(gridRenta.CurrentRow.Cells["ID"].Value);
-
+                renta.ID = Convert.ToInt32(gridRenta.CurrentRow.Cells["ID"].Value);
                 using (DBEntities db = new DBEntities())
                 {
-                    model = db.RENTA.Where(x => x.ID == model.ID).FirstOrDefault();
+                    //Renta
+                    renta = db.RENTA.Where(x => x.ID == renta.ID).FirstOrDefault();
+                    dpCliente.Enabled = true;
+                    dpCliente.SelectedValue = Convert.ToInt32(renta.ID_CLIENTE);
+                    dpVehiculo.Enabled = true;
+                    dpVehiculo.SelectedValue = Convert.ToInt32(renta.ID_VEHICULO);
+                    dpFechaRenta.Enabled = true;
+                    dpFechaRenta.Value = Convert.ToDateTime(renta.FECHA_RENTA);
+                    dpDevolucion.Enabled = true;
+                    dpDevolucion.Value = Convert.ToDateTime(renta.FECHA_DEVOLUCION);
+                    txtDescripcion.Enabled = true;
+                    txtDescripcion.Text = renta.DESCRIPCION;
+                    txtCantidadDias.Text = renta.CANTIDAD_DIAS.ToString();
+                    txtMontoDia.Enabled = true;
+                    txtMontoDia.Text = renta.MONTO_DIA.ToString();
+                    txtCodigo.Text = renta.CODIGO;
+                    chcEstado.Enabled = true;
+                    chcEstado.Checked = Convert.ToBoolean(renta.ESTADO);
 
-                    dpVehiculo.SelectedValue = Convert.ToInt32(model.ID_VEHICULO);
-                    dpEmpleado.SelectedValue = Convert.ToInt32(model.ID_EMPLEADO);
-                    dpCliente.SelectedValue = Convert.ToInt32(model.ID_CLIENTE);
-                    btnInspeccion.Enabled = false;
-                    btnInspeccion.Text = model.INSPECCION.CODIGO;
-                    dpFechaRenta.Text = model.FECHA_RENTA.ToString();
-                    dpDevolucion.Value = Convert.ToDateTime(model.FECHA_DEVOLUCION);
-                    dpDevolucion.Enabled = false;
-                    txtCantidadDias.Text = model.CANTIDAD_DIAS.ToString();
-                    txtMontoDia.Text = model.MONTO_DIA.ToString();
-                    txtMontoDia.Enabled = false;
-                    decimal TotalAPagaar = Convert.ToInt32(model.CANTIDAD_DIAS) * Convert.ToDecimal(model.MONTO_DIA);
-                    txtTotal.Text = TotalAPagaar.ToString();
-                    txtTotal.Enabled = false;
-                    txtDescripcion.Text = model.DESCRIPCION;
-                    txtDescripcion.Enabled = false;
-                    btnSave.Enabled = false;
-                    dpCliente.Enabled = false;
-                    dpEmpleado.Enabled = false;
-                    dpVehiculo.Enabled = false;
+                    //inspeccion
+                    inspeccion = db.INSPECCION.Where(x => x.ID == renta.ID_INSPECCION).FirstOrDefault();
+                    chcLlantaDerechaD.Checked = Convert.ToBoolean(inspeccion.GOMA_DELANTERA_DERECHA);
+                    chcLlantaIzquierdaD.Checked = Convert.ToBoolean(inspeccion.GOMA_DELANTERA_IZQUIERDA);
+                    chcLlantaDerechaT.Checked = Convert.ToBoolean(inspeccion.GOMA_TRASERA_DERECHA);
+                    chcLlantaIzquierdaT.Checked = Convert.ToBoolean(inspeccion.GOMA_TRASERA_IZQUIERDA);
+                    chcTieneGoma.Checked = Convert.ToBoolean(inspeccion.TIENE_GOMA);
+                    chcRayadura.Checked = Convert.ToBoolean(inspeccion.TIENE_RAYADURAS);
+                    chcTieneGato.Checked = Convert.ToBoolean(inspeccion.TIENE_GATO);
+                    chcTieneRoturaCristal.Checked = Convert.ToBoolean(inspeccion.TIENE_ROTURA_CRISTAL);
+                    dpCantidaCombustible.SelectedValue = Convert.ToInt32(inspeccion.ID_CANTIDAD_COMBUSTIBLE);
                 }
+
+                btnNuevo.Enabled = false;
+                btnCancelar.Enabled = true;
+                btnSave.Enabled = true;
+            }
+        }
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.RENTA
+                        .Where(x =>
+                            x.CLIENTE.NOMBRES.Contains(txtFiltrar.Text.Trim()) ||
+                            x.CLIENTE.APELLIDOS.Contains(txtFiltrar.Text.Trim()) ||
+                            x.CODIGO.Contains(txtFiltrar.Text.Trim()) ||
+                            x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim()) ||
+                            x.VEHICULO.MODELO_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE + " " + x.VEHICULO.MODELO_VEHICULO.NOMBRE,
+                            CLIENTE = x.CLIENTE.NOMBRES + " " + x.CLIENTE.APELLIDOS,
+                            x.CODIGO,
+                            ESTADO = x.ESTADO == true ? "Entregado" : "Sin Entregar"
+                        })
+                        .ToList();
+                    gridRenta.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
             }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            dpVehiculo.Enabled = true;
-            dpEmpleado.Enabled = true;
+            //Renta
             dpCliente.Enabled = true;
-            btnInspeccion.Enabled = true;
-            btnInspeccion.Text = "Crear Inspeccion";
+            dpVehiculo.Enabled = true;
+            txtTotal.Enabled = false;
+            txtTotal.Text = "0";
+            dpFechaRenta.MinDate = DateTime.Now;
+            dpFechaRenta.Value = DateTime.Now;
             dpFechaRenta.Enabled = true;
-            //dpFechaRenta.ReadOnly = true;
-            dpFechaRenta.Text = DateTime.Now.ToString();
-            dpDevolucion.Enabled = true;
-            dpDevolucion.MinDate = DateTime.Now;
             dpDevolucion.Value = DateTime.Now;
-            txtMontoDia.Enabled = true;
-            txtMontoDia.ReadOnly = false;
-            txtMontoDia.Text = "";
-            txtDescripcion.Enabled = true;
-            txtDescripcion.ReadOnly = false;
+            dpDevolucion.Enabled = true;
             txtDescripcion.Text = "";
-            btnNuevo.Enabled = false;
+            txtDescripcion.Enabled = true;
+            txtCantidadDias.Text = "";
+            txtMontoDia.Text = "";
+            txtMontoDia.Enabled = true;
+            chcEstado.Checked = false;
+            chcEstado.Enabled = false;
             btnSave.Enabled = true;
-            model.ID = 0;
+            btnCancelar.Enabled = true;
+            btnNuevo.Enabled = false;
+            renta.ID = 0;
+
+            //Inspeccion
+            chcLlantaDerechaD.Checked = false;
+            chcLlantaDerechaD.Enabled = true;
+            chcLlantaIzquierdaD.Checked = false;
+            chcLlantaIzquierdaD.Enabled = true;
+            chcLlantaDerechaT.Checked = false;
+            chcLlantaDerechaT.Enabled = true;
+            chcLlantaIzquierdaT.Checked = false;
+            chcLlantaIzquierdaT.Enabled = true;
+            chcTieneGoma.Checked = false;
+            chcTieneGoma.Enabled = true;
+            chcRayadura.Checked = false;
+            chcRayadura.Enabled = true;
+            chcTieneGato.Checked = false;
+            chcTieneGato.Enabled = true;
+            chcTieneRoturaCristal.Checked = false;
+            chcTieneRoturaCristal.Enabled = true;
+            dpCantidaCombustible.Enabled = true;
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtCantidadDias_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpFechaRenta_ValueChanged(object sender, EventArgs e)
+        {
+            dpDevolucion.MinDate = dpFechaRenta.Value;
+            SetCantidadDias();
+            SetTotalAPagar();
+        }
+
+        private void SetCantidadDias()
+        {
+            DateTime StartDate = dpFechaRenta.Value;
+            DateTime EndDate = dpDevolucion.Value;
+
+            int dias = (EndDate - StartDate).Days + 1;
+            txtCantidadDias.Text = dias.ToString();
+        }
+
+        private string GenerateCode(int length = 6)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private void txtFiltrar_TextChanged_1(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.RENTA
+                        .Where(x =>
+                            x.CLIENTE.NOMBRES.Contains(txtFiltrar.Text.Trim()) ||
+                            x.CLIENTE.APELLIDOS.Contains(txtFiltrar.Text.Trim()) ||
+                            x.CODIGO.Contains(txtFiltrar.Text.Trim()) ||
+                            x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim()) ||
+                            x.VEHICULO.MODELO_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE + " " + x.VEHICULO.MODELO_VEHICULO.NOMBRE,
+                            CLIENTE = x.CLIENTE.NOMBRES + " " + x.CLIENTE.APELLIDOS,
+                            x.CODIGO,
+                            ESTADO = x.ESTADO == true ? "Entregado" : "Sin Entregar"
+                        })
+                        .ToList();
+                    gridRenta.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
+        }
+
+        //private void BtnExport_Click(object sender, EventArgs e)
+        //{
+        //    using (DBEntities db = new DBEntities())
+        //    {
+        //        var items = db.RENTA.ToList();
+        //        var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reports\Renta.cshtml");
+        //        var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
+        //        var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
+        //        SaveFileDialog saveFileDialog = new SaveFileDialog();
+        //        saveFileDialog.FileName = "Rentas";
+        //        saveFileDialog.DefaultExt = "pdf";
+        //        saveFileDialog.ShowDialog();
+        //        htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
+        //    }
+        //}
     }
 }

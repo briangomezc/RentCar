@@ -29,14 +29,28 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chcEstado = new System.Windows.Forms.CheckBox();
+            this.dpTipoPersona = new System.Windows.Forms.ComboBox();
+            this.txtLimiteCredito = new System.Windows.Forms.TextBox();
+            this.txtTarjetaCredito = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.txtCedula = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.gridCliente = new System.Windows.Forms.DataGridView();
+            this.labelTipoCliente = new System.Windows.Forms.Label();
+            this.chcEstado = new System.Windows.Forms.CheckBox();
             this.dpFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.lbFechaCreacion = new System.Windows.Forms.Label();
+            this.gridCliente = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.APELLIDOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELEFONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LIMITE_CREDITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbCombustible = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -47,20 +61,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelTipoCliente = new System.Windows.Forms.Label();
-            this.txtCedula = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtTarjetaCredito = new System.Windows.Forms.TextBox();
-            this.txtLimiteCredito = new System.Windows.Forms.TextBox();
-            this.dpTipoPersona = new System.Windows.Forms.ComboBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.APELLIDOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TELEFONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LIMITE_CREDITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
             this.SuspendLayout();
@@ -85,15 +85,28 @@
             this.panel1.Size = new System.Drawing.Size(1042, 499);
             this.panel1.TabIndex = 0;
             // 
-            // chcEstado
+            // dpTipoPersona
             // 
-            this.chcEstado.AutoSize = true;
-            this.chcEstado.Location = new System.Drawing.Point(736, 101);
-            this.chcEstado.Name = "chcEstado";
-            this.chcEstado.Size = new System.Drawing.Size(59, 17);
-            this.chcEstado.TabIndex = 89;
-            this.chcEstado.Text = "Estado";
-            this.chcEstado.UseVisualStyleBackColor = true;
+            this.dpTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dpTipoPersona.FormattingEnabled = true;
+            this.dpTipoPersona.Location = new System.Drawing.Point(736, 6);
+            this.dpTipoPersona.Name = "dpTipoPersona";
+            this.dpTipoPersona.Size = new System.Drawing.Size(155, 21);
+            this.dpTipoPersona.TabIndex = 92;
+            // 
+            // txtLimiteCredito
+            // 
+            this.txtLimiteCredito.Location = new System.Drawing.Point(461, 94);
+            this.txtLimiteCredito.Name = "txtLimiteCredito";
+            this.txtLimiteCredito.Size = new System.Drawing.Size(155, 20);
+            this.txtLimiteCredito.TabIndex = 91;
+            // 
+            // txtTarjetaCredito
+            // 
+            this.txtTarjetaCredito.Location = new System.Drawing.Point(461, 51);
+            this.txtTarjetaCredito.Name = "txtTarjetaCredito";
+            this.txtTarjetaCredito.Size = new System.Drawing.Size(155, 20);
+            this.txtTarjetaCredito.TabIndex = 85;
             // 
             // button4
             // 
@@ -105,6 +118,13 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // txtCedula
+            // 
+            this.txtCedula.Location = new System.Drawing.Point(118, 138);
+            this.txtCedula.Name = "txtCedula";
+            this.txtCedula.Size = new System.Drawing.Size(155, 20);
+            this.txtCedula.TabIndex = 90;
+            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(247, 199);
@@ -114,6 +134,15 @@
             this.btnDelete.Text = "Estado";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 145);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 89;
+            this.label6.Text = "Cedula";
             // 
             // btnSave
             // 
@@ -134,6 +163,43 @@
             this.btnClose.Text = "Volver";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // labelTipoCliente
+            // 
+            this.labelTipoCliente.AutoSize = true;
+            this.labelTipoCliente.Location = new System.Drawing.Point(636, 11);
+            this.labelTipoCliente.Name = "labelTipoCliente";
+            this.labelTipoCliente.Size = new System.Drawing.Size(63, 13);
+            this.labelTipoCliente.TabIndex = 89;
+            this.labelTipoCliente.Text = "Tipo Cliente";
+            // 
+            // chcEstado
+            // 
+            this.chcEstado.AutoSize = true;
+            this.chcEstado.Location = new System.Drawing.Point(736, 101);
+            this.chcEstado.Name = "chcEstado";
+            this.chcEstado.Size = new System.Drawing.Size(59, 17);
+            this.chcEstado.TabIndex = 89;
+            this.chcEstado.Text = "Estado";
+            this.chcEstado.UseVisualStyleBackColor = true;
+            // 
+            // dpFechaIngreso
+            // 
+            this.dpFechaIngreso.Enabled = false;
+            this.dpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpFechaIngreso.Location = new System.Drawing.Point(736, 48);
+            this.dpFechaIngreso.Name = "dpFechaIngreso";
+            this.dpFechaIngreso.Size = new System.Drawing.Size(155, 20);
+            this.dpFechaIngreso.TabIndex = 81;
+            // 
+            // lbFechaCreacion
+            // 
+            this.lbFechaCreacion.AutoSize = true;
+            this.lbFechaCreacion.Location = new System.Drawing.Point(636, 55);
+            this.lbFechaCreacion.Name = "lbFechaCreacion";
+            this.lbFechaCreacion.Size = new System.Drawing.Size(75, 13);
+            this.lbFechaCreacion.TabIndex = 80;
+            this.lbFechaCreacion.Text = "Fecha Ingreso";
             // 
             // gridCliente
             // 
@@ -157,23 +223,62 @@
             this.gridCliente.TabIndex = 84;
             this.gridCliente.DoubleClick += new System.EventHandler(this.gridCliente_DoubleClick);
             // 
-            // dpFechaIngreso
+            // ID
             // 
-            this.dpFechaIngreso.Enabled = false;
-            this.dpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpFechaIngreso.Location = new System.Drawing.Point(736, 48);
-            this.dpFechaIngreso.Name = "dpFechaIngreso";
-            this.dpFechaIngreso.Size = new System.Drawing.Size(155, 20);
-            this.dpFechaIngreso.TabIndex = 81;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
             // 
-            // lbFechaCreacion
+            // NOMBRES
             // 
-            this.lbFechaCreacion.AutoSize = true;
-            this.lbFechaCreacion.Location = new System.Drawing.Point(636, 55);
-            this.lbFechaCreacion.Name = "lbFechaCreacion";
-            this.lbFechaCreacion.Size = new System.Drawing.Size(75, 13);
-            this.lbFechaCreacion.TabIndex = 80;
-            this.lbFechaCreacion.Text = "Fecha Ingreso";
+            this.NOMBRES.DataPropertyName = "NOMBRES";
+            this.NOMBRES.HeaderText = "Nombre";
+            this.NOMBRES.Name = "NOMBRES";
+            this.NOMBRES.ReadOnly = true;
+            // 
+            // APELLIDOS
+            // 
+            this.APELLIDOS.DataPropertyName = "APELLIDOS";
+            this.APELLIDOS.HeaderText = "Apellidos";
+            this.APELLIDOS.Name = "APELLIDOS";
+            this.APELLIDOS.ReadOnly = true;
+            // 
+            // CEDULA
+            // 
+            this.CEDULA.DataPropertyName = "CEDULA";
+            this.CEDULA.HeaderText = "Cedula";
+            this.CEDULA.Name = "CEDULA";
+            this.CEDULA.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "EMAIL";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // TELEFONO
+            // 
+            this.TELEFONO.DataPropertyName = "TELEFONO";
+            this.TELEFONO.HeaderText = "Telefono";
+            this.TELEFONO.Name = "TELEFONO";
+            this.TELEFONO.ReadOnly = true;
+            // 
+            // LIMITE_CREDITO
+            // 
+            this.LIMITE_CREDITO.DataPropertyName = "LIMITE_CREDITO";
+            this.LIMITE_CREDITO.HeaderText = "Limite Credito";
+            this.LIMITE_CREDITO.Name = "LIMITE_CREDITO";
+            this.LIMITE_CREDITO.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // lbCombustible
             // 
@@ -257,110 +362,6 @@
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 68;
             this.label1.Text = "Nombre";
-            // 
-            // labelTipoCliente
-            // 
-            this.labelTipoCliente.AutoSize = true;
-            this.labelTipoCliente.Location = new System.Drawing.Point(636, 11);
-            this.labelTipoCliente.Name = "labelTipoCliente";
-            this.labelTipoCliente.Size = new System.Drawing.Size(63, 13);
-            this.labelTipoCliente.TabIndex = 89;
-            this.labelTipoCliente.Text = "Tipo Cliente";
-            // 
-            // txtCedula
-            // 
-            this.txtCedula.Location = new System.Drawing.Point(118, 138);
-            this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(155, 20);
-            this.txtCedula.TabIndex = 90;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 145);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 89;
-            this.label6.Text = "Cedula";
-            // 
-            // txtTarjetaCredito
-            // 
-            this.txtTarjetaCredito.Location = new System.Drawing.Point(461, 51);
-            this.txtTarjetaCredito.Name = "txtTarjetaCredito";
-            this.txtTarjetaCredito.Size = new System.Drawing.Size(155, 20);
-            this.txtTarjetaCredito.TabIndex = 85;
-            // 
-            // txtLimiteCredito
-            // 
-            this.txtLimiteCredito.Location = new System.Drawing.Point(461, 94);
-            this.txtLimiteCredito.Name = "txtLimiteCredito";
-            this.txtLimiteCredito.Size = new System.Drawing.Size(155, 20);
-            this.txtLimiteCredito.TabIndex = 91;
-            // 
-            // dpTipoPersona
-            // 
-            this.dpTipoPersona.FormattingEnabled = true;
-            this.dpTipoPersona.Location = new System.Drawing.Point(736, 6);
-            this.dpTipoPersona.Name = "dpTipoPersona";
-            this.dpTipoPersona.Size = new System.Drawing.Size(155, 21);
-            this.dpTipoPersona.TabIndex = 92;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "Nombre";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
-            // 
-            // APELLIDOS
-            // 
-            this.APELLIDOS.DataPropertyName = "APELLIDOS";
-            this.APELLIDOS.HeaderText = "Apellidos";
-            this.APELLIDOS.Name = "APELLIDOS";
-            this.APELLIDOS.ReadOnly = true;
-            // 
-            // CEDULA
-            // 
-            this.CEDULA.DataPropertyName = "CEDULA";
-            this.CEDULA.HeaderText = "Cedula";
-            this.CEDULA.Name = "CEDULA";
-            this.CEDULA.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "EMAIL";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // TELEFONO
-            // 
-            this.TELEFONO.DataPropertyName = "TELEFONO";
-            this.TELEFONO.HeaderText = "Telefono";
-            this.TELEFONO.Name = "TELEFONO";
-            this.TELEFONO.ReadOnly = true;
-            // 
-            // LIMITE_CREDITO
-            // 
-            this.LIMITE_CREDITO.DataPropertyName = "LIMITE_CREDITO";
-            this.LIMITE_CREDITO.HeaderText = "Limite Credito";
-            this.LIMITE_CREDITO.Name = "LIMITE_CREDITO";
-            this.LIMITE_CREDITO.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
             // 
             // FrmCliente
             // 
