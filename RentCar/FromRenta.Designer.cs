@@ -32,7 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.chcLlantaIzquierdaT = new System.Windows.Forms.CheckBox();
@@ -112,7 +112,7 @@
             // 
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.txtFiltrar);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnExportar);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.txtCodigo);
@@ -159,16 +159,17 @@
             this.txtFiltrar.Name = "txtFiltrar";
             this.txtFiltrar.Size = new System.Drawing.Size(155, 20);
             this.txtFiltrar.TabIndex = 148;
-            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged_1);
+            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
             // 
-            // button1
+            // btnExportar
             // 
-            this.button1.Location = new System.Drawing.Point(769, 150);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 145;
-            this.button1.Text = "Exportar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExportar.Location = new System.Drawing.Point(769, 150);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 25);
+            this.btnExportar.TabIndex = 145;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // groupBox1
             // 
@@ -758,7 +759,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.CheckBox chcRayadura;
         private System.Windows.Forms.DataGridView gridRenta;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtFiltrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;

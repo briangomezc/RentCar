@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace RentCar
 {
@@ -350,39 +353,7 @@ namespace RentCar
                 btnSave.Enabled = true;
             }
         }
-
-        private void txtFiltrar_TextChanged(object sender, EventArgs e)
-        {
-            if (txtFiltrar.Text.Length > 0)
-            {
-                using (DBEntities db = new DBEntities())
-                {
-                    var items = db.RENTA
-                        .Where(x =>
-                            x.CLIENTE.NOMBRES.Contains(txtFiltrar.Text.Trim()) ||
-                            x.CLIENTE.APELLIDOS.Contains(txtFiltrar.Text.Trim()) ||
-                            x.CODIGO.Contains(txtFiltrar.Text.Trim()) ||
-                            x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim()) ||
-                            x.VEHICULO.MODELO_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim())
-                        )
-                        .Select(
-                        x => new
-                        {
-                            x.ID,
-                            VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE + " " + x.VEHICULO.MODELO_VEHICULO.NOMBRE,
-                            CLIENTE = x.CLIENTE.NOMBRES + " " + x.CLIENTE.APELLIDOS,
-                            x.CODIGO,
-                            ESTADO = x.ESTADO == true ? "Entregado" : "Sin Entregar"
-                        })
-                        .ToList();
-                    gridRenta.DataSource = items;
-                }
-            }
-            else
-            {
-                PopulateDataGridView();
-            }
-        }
+        
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -467,7 +438,7 @@ namespace RentCar
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private void txtFiltrar_TextChanged_1(object sender, EventArgs e)
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
         {
             if (txtFiltrar.Text.Length > 0)
             {
@@ -500,20 +471,21 @@ namespace RentCar
             }
         }
 
-        //private void BtnExport_Click(object sender, EventArgs e)
-        //{
-        //    using (DBEntities db = new DBEntities())
-        //    {
-        //        var items = db.RENTA.ToList();
-        //        var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reports\Renta.cshtml");
-        //        var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
-        //        var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
-        //        SaveFileDialog saveFileDialog = new SaveFileDialog();
-        //        saveFileDialog.FileName = "Rentas";
-        //        saveFileDialog.DefaultExt = "pdf";
-        //        saveFileDialog.ShowDialog();
-        //        htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
-        //    }
-        //}
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var items = db.RENTA.ToList();
+                var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reporte\ReporteRenta.cshtml");
+                var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
+                var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Rentas";
+                saveFileDialog.DefaultExt = "pdf";
+                saveFileDialog.ShowDialog();
+                htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
+            }
+        }
     }
 }

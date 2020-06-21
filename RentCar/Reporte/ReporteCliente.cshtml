@@ -1,0 +1,48 @@
+﻿@model IEnumerable<RentCar.CLIENTE>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reporte de Clientes</title>
+
+
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="title">Rent car</div>
+            <div class="det">
+                @* <span><strong>Fecha: </strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm") </span> *@
+            </div>
+        </div>
+        <div class="section">
+            <h3 class="header">Reporte de Clientes</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Cedula</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in Model)
+                    {
+                        <tr>
+                            <td>@row.NOMBRES</td>
+                            <td>@row.APELLIDOS</td>
+                            <td>@row.CEDULA</td>
+                            <td>@row.EMAIL</td>
+                            <td>@row.TELEFONO</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+
+</html>

@@ -61,12 +61,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.dpTipoPersona);
             this.panel1.Controls.Add(this.txtLimiteCredito);
             this.panel1.Controls.Add(this.txtTarjetaCredito);
@@ -363,6 +365,16 @@
             this.label1.TabIndex = 68;
             this.label1.Text = "Nombre";
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(837, 199);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 25);
+            this.btnExportar.TabIndex = 93;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,5 +438,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONO;
         private System.Windows.Forms.DataGridViewTextBoxColumn LIMITE_CREDITO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

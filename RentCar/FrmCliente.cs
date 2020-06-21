@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace RentCar
 {
@@ -221,6 +224,25 @@ namespace RentCar
                     btnDelete.Enabled = true;
                 }
             }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+
+            using (DBEntities db = new DBEntities())
+            {
+                var items = db.CLIENTE.ToList();
+
+                var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reporte\ReporteCliente.cshtml");
+                var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
+                var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Clientes";
+                saveFileDialog.DefaultExt = "pdf";
+                saveFileDialog.ShowDialog();
+                htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
+            }
+
         }
     }
 }
