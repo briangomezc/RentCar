@@ -333,7 +333,6 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(155, 20);
             this.txtTelefono.TabIndex = 75;
-            this.txtTelefono.UseSystemPasswordChar = true;
             // 
             // label4
             // 
