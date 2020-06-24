@@ -28,158 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.logOut = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoVehiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcaVehiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.combustibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horaFecha = new System.Windows.Forms.Timer(this.components);
+            this.lblTime = new System.Windows.Forms.Label();
             this.panelContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelContainer
             // 
-            this.panelContainer.Controls.Add(this.button9);
-            this.panelContainer.Controls.Add(this.logOut);
-            this.panelContainer.Controls.Add(this.button8);
-            this.panelContainer.Controls.Add(this.button7);
-            this.panelContainer.Controls.Add(this.button6);
-            this.panelContainer.Controls.Add(this.button5);
-            this.panelContainer.Controls.Add(this.button4);
-            this.panelContainer.Controls.Add(this.button3);
-            this.panelContainer.Controls.Add(this.button2);
-            this.panelContainer.Controls.Add(this.button1);
+            this.panelContainer.Controls.Add(this.panel1);
             this.panelContainer.Controls.Add(this.menuStrip1);
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(956, 450);
+            this.panelContainer.Size = new System.Drawing.Size(1088, 659);
             this.panelContainer.TabIndex = 0;
             // 
-            // button9
+            // panel1
             // 
-            this.button9.Location = new System.Drawing.Point(706, 243);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Controls.Add(this.lblTimer);
+            this.panel1.Controls.Add(this.logOut);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1085, 629);
+            this.panel1.TabIndex = 11;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblTimer.Location = new System.Drawing.Point(368, 404);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(100, 37);
+            this.lblTimer.TabIndex = 12;
+            this.lblTimer.Text = "label1";
             // 
             // logOut
             // 
-            this.logOut.Location = new System.Drawing.Point(854, 27);
+            this.logOut.Location = new System.Drawing.Point(491, 495);
             this.logOut.Name = "logOut";
-            this.logOut.Size = new System.Drawing.Size(75, 23);
+            this.logOut.Size = new System.Drawing.Size(156, 52);
             this.logOut.TabIndex = 10;
             this.logOut.Text = "Salir";
             this.logOut.UseVisualStyleBackColor = true;
             this.logOut.Click += new System.EventHandler(this.logOut_Click);
             // 
-            // button8
+            // pictureBox1
             // 
-            this.button8.Location = new System.Drawing.Point(706, 176);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(706, 109);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(573, 243);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(564, 176);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Combustible";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(564, 109);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Empleado";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(371, 243);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Vehiculo";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(371, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Marca";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(371, 109);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Tipo Vehiculo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.pictureBox1.Image = global::RentCar.Properties.Resources.editada;
+            this.pictureBox1.Location = new System.Drawing.Point(277, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(529, 458);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dToolStripMenuItem,
             this.dToolStripMenuItem1,
-            this.sToolStripMenuItem,
-            this.aToolStripMenuItem});
+            this.sToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(956, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1088, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -189,60 +124,128 @@
             this.dToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gToolStripMenuItem,
             this.gToolStripMenuItem1,
-            this.gToolStripMenuItem2});
+            this.tandaToolStripMenuItem});
             this.dToolStripMenuItem.Name = "dToolStripMenuItem";
-            this.dToolStripMenuItem.Size = new System.Drawing.Size(26, 20);
-            this.dToolStripMenuItem.Text = "d";
+            this.dToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.dToolStripMenuItem.Text = "Usuario";
             this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
             // 
             // gToolStripMenuItem
             // 
             this.gToolStripMenuItem.Name = "gToolStripMenuItem";
-            this.gToolStripMenuItem.Size = new System.Drawing.Size(81, 22);
-            this.gToolStripMenuItem.Text = "g";
+            this.gToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.gToolStripMenuItem.Text = "Cliente";
+            this.gToolStripMenuItem.Click += new System.EventHandler(this.gToolStripMenuItem_Click);
             // 
             // gToolStripMenuItem1
             // 
             this.gToolStripMenuItem1.Name = "gToolStripMenuItem1";
-            this.gToolStripMenuItem1.Size = new System.Drawing.Size(81, 22);
-            this.gToolStripMenuItem1.Text = "g";
+            this.gToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.gToolStripMenuItem1.Text = "Empleado";
+            this.gToolStripMenuItem1.Click += new System.EventHandler(this.gToolStripMenuItem1_Click);
             // 
-            // gToolStripMenuItem2
+            // tandaToolStripMenuItem
             // 
-            this.gToolStripMenuItem2.Name = "gToolStripMenuItem2";
-            this.gToolStripMenuItem2.Size = new System.Drawing.Size(81, 22);
-            this.gToolStripMenuItem2.Text = "g";
+            this.tandaToolStripMenuItem.Name = "tandaToolStripMenuItem";
+            this.tandaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.tandaToolStripMenuItem.Text = "Tanda";
+            this.tandaToolStripMenuItem.Click += new System.EventHandler(this.tandaToolStripMenuItem_Click);
             // 
             // dToolStripMenuItem1
             // 
+            this.dToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tipoVehiculoToolStripMenuItem,
+            this.marcaVehiculoToolStripMenuItem,
+            this.modeloToolStripMenuItem,
+            this.combustibleToolStripMenuItem,
+            this.vehiculosToolStripMenuItem});
             this.dToolStripMenuItem1.Name = "dToolStripMenuItem1";
-            this.dToolStripMenuItem1.Size = new System.Drawing.Size(26, 20);
-            this.dToolStripMenuItem1.Text = "d";
+            this.dToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
+            this.dToolStripMenuItem1.Text = "Vehiculo";
+            // 
+            // tipoVehiculoToolStripMenuItem
+            // 
+            this.tipoVehiculoToolStripMenuItem.Name = "tipoVehiculoToolStripMenuItem";
+            this.tipoVehiculoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.tipoVehiculoToolStripMenuItem.Text = "Tipo";
+            this.tipoVehiculoToolStripMenuItem.Click += new System.EventHandler(this.tipoVehiculoToolStripMenuItem_Click);
+            // 
+            // marcaVehiculoToolStripMenuItem
+            // 
+            this.marcaVehiculoToolStripMenuItem.Name = "marcaVehiculoToolStripMenuItem";
+            this.marcaVehiculoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.marcaVehiculoToolStripMenuItem.Text = "Marca";
+            this.marcaVehiculoToolStripMenuItem.Click += new System.EventHandler(this.marcaVehiculoToolStripMenuItem_Click);
+            // 
+            // modeloToolStripMenuItem
+            // 
+            this.modeloToolStripMenuItem.Name = "modeloToolStripMenuItem";
+            this.modeloToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.modeloToolStripMenuItem.Text = "Modelo";
+            this.modeloToolStripMenuItem.Click += new System.EventHandler(this.modeloToolStripMenuItem_Click);
+            // 
+            // combustibleToolStripMenuItem
+            // 
+            this.combustibleToolStripMenuItem.Name = "combustibleToolStripMenuItem";
+            this.combustibleToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.combustibleToolStripMenuItem.Text = "Combustible";
+            this.combustibleToolStripMenuItem.Click += new System.EventHandler(this.combustibleToolStripMenuItem_Click);
+            // 
+            // vehiculosToolStripMenuItem
+            // 
+            this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.vehiculosToolStripMenuItem.Text = "Vehiculos";
+            this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
             // sToolStripMenuItem
             // 
+            this.sToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rentasToolStripMenuItem});
             this.sToolStripMenuItem.Name = "sToolStripMenuItem";
-            this.sToolStripMenuItem.Size = new System.Drawing.Size(24, 20);
-            this.sToolStripMenuItem.Text = "s";
+            this.sToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.sToolStripMenuItem.Text = "Renta";
             // 
-            // aToolStripMenuItem
+            // rentasToolStripMenuItem
             // 
-            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 20);
-            this.aToolStripMenuItem.Text = "a";
+            this.rentasToolStripMenuItem.Name = "rentasToolStripMenuItem";
+            this.rentasToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.rentasToolStripMenuItem.Text = "Rentas";
+            this.rentasToolStripMenuItem.Click += new System.EventHandler(this.rentasToolStripMenuItem_Click);
+            // 
+            // horaFecha
+            // 
+            this.horaFecha.Enabled = true;
+            this.horaFecha.Tick += new System.EventHandler(this.horaFecha_Tick);
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblTime.Location = new System.Drawing.Point(503, 441);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(100, 37);
+            this.lblTime.TabIndex = 13;
+            this.lblTime.Text = "label1";
             // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 450);
+            this.ClientSize = new System.Drawing.Size(1085, 659);
             this.Controls.Add(this.panelContainer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmHome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -252,24 +255,25 @@
         #endregion
 
         private System.Windows.Forms.Panel panelContainer;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button logOut;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ToolStripMenuItem tipoVehiculoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcaVehiculoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modeloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem combustibleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tandaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vehiculosToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer horaFecha;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Label lblTime;
     }
 }
 

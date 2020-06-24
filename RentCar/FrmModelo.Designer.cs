@@ -43,12 +43,18 @@
             this.chcEstado = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFiltrar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridModelo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtFiltrar);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dpMarca);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.gridModelo);
@@ -61,14 +67,14 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 447);
+            this.panel1.Size = new System.Drawing.Size(1085, 659);
             this.panel1.TabIndex = 0;
             // 
             // dpMarca
             // 
             this.dpMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dpMarca.FormattingEnabled = true;
-            this.dpMarca.Location = new System.Drawing.Point(109, 35);
+            this.dpMarca.Location = new System.Drawing.Point(122, 208);
             this.dpMarca.Name = "dpMarca";
             this.dpMarca.Size = new System.Drawing.Size(155, 21);
             this.dpMarca.TabIndex = 41;
@@ -76,7 +82,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 38);
+            this.label6.Location = new System.Drawing.Point(22, 211);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 40;
@@ -92,10 +98,10 @@
             this.Marca,
             this.ESTADO});
             this.gridModelo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridModelo.Location = new System.Drawing.Point(0, 224);
+            this.gridModelo.Location = new System.Drawing.Point(0, 436);
             this.gridModelo.Name = "gridModelo";
             this.gridModelo.ReadOnly = true;
-            this.gridModelo.Size = new System.Drawing.Size(799, 223);
+            this.gridModelo.Size = new System.Drawing.Size(1085, 223);
             this.gridModelo.TabIndex = 23;
             this.gridModelo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCombustibleVehiculo_CellContentClick);
             this.gridModelo.DoubleClick += new System.EventHandler(this.gridModelo_DoubleClick);
@@ -132,7 +138,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(477, 108);
+            this.button4.Location = new System.Drawing.Point(490, 314);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 25);
             this.button4.TabIndex = 22;
@@ -142,7 +148,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(154, 108);
+            this.btnDelete.Location = new System.Drawing.Point(167, 314);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 21;
@@ -152,7 +158,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(27, 108);
+            this.btnSave.Location = new System.Drawing.Point(40, 314);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
@@ -162,7 +168,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(109, 9);
+            this.txtNombre.Location = new System.Drawing.Point(122, 144);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(155, 20);
             this.txtNombre.TabIndex = 19;
@@ -170,7 +176,7 @@
             // chcEstado
             // 
             this.chcEstado.AutoSize = true;
-            this.chcEstado.Location = new System.Drawing.Point(109, 71);
+            this.chcEstado.Location = new System.Drawing.Point(122, 268);
             this.chcEstado.Name = "chcEstado";
             this.chcEstado.Size = new System.Drawing.Size(59, 17);
             this.chcEstado.TabIndex = 18;
@@ -180,7 +186,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 12);
+            this.label1.Location = new System.Drawing.Point(22, 151);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 17;
@@ -188,7 +194,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(604, 110);
+            this.btnClose.Location = new System.Drawing.Point(617, 316);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 16;
@@ -196,12 +202,40 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(253, 37);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Modelo Vehiculo";
+            // 
+            // txtFiltrar
+            // 
+            this.txtFiltrar.Location = new System.Drawing.Point(749, 410);
+            this.txtFiltrar.Name = "txtFiltrar";
+            this.txtFiltrar.Size = new System.Drawing.Size(155, 20);
+            this.txtFiltrar.TabIndex = 44;
+            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(649, 417);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Buscar";
+            // 
             // FrmModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1085, 659);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmModelo";
             this.Text = "FrmModelo";
             this.Load += new System.EventHandler(this.FrmModelo_Load);
@@ -229,5 +263,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtFiltrar;
+        private System.Windows.Forms.Label label3;
     }
 }

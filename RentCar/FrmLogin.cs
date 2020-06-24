@@ -68,6 +68,9 @@ namespace RentCar
                         if (empleado.CLAVE.Equals(txtPassword.Text.Trim()))
                         {
                             FrmHome frm = new FrmHome();
+                            FormWelcome welcome = new FormWelcome();
+                            this.Hide();
+                            welcome.ShowDialog();
                             frm.EMPLEADO = empleado;
                             this.Hide();
                             frm.Show();

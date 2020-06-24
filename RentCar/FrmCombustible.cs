@@ -122,8 +122,8 @@ namespace RentCar
         private void FrmCombustible_Load(object sender, EventArgs e)
         {
             ClearForm();
+            this.Hide();
             PopulateDataGridView();
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private bool ValidateData()
@@ -139,7 +139,11 @@ namespace RentCar
 
         private void FrmCombustible_DoubleClick(object sender, EventArgs e)
         {
-            //No funciona el doble click
+          
+        }
+
+        private void gridCombustibleVehiculo_DoubleClick(object sender, EventArgs e)
+        {
             if (gridCombustibleVehiculo.CurrentRow.Index != -1)
             {
                 model.ID = Convert.ToInt32(gridCombustibleVehiculo.CurrentRow.Cells["ID"].Value);
@@ -148,12 +152,11 @@ namespace RentCar
                     model = db.COMBUSTIBLE_VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtNombre.Text = model.NOMBRE;
                     chcEstado.Checked = Convert.ToBoolean(model.ESTADO);
+                    btnDelete.Text = model.ESTADO == true ? "Deshabilitar" : "Habilitar";
+                    btnSave.Text = "Actualizar";
+                    btnDelete.Enabled = true;
                 }
-                btnSave.Text = "Actualizar";
-                btnDelete.Enabled = true;
             }
         }
-
-       
     }
 }

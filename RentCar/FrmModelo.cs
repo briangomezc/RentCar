@@ -164,6 +164,31 @@ namespace RentCar
                 }
             }
         }
-        
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.MODELO_VEHICULO
+                        .Where(x => x.NOMBRE.Contains(txtFiltrar.Text.Trim().ToUpper()) || x.MARCA_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim().ToUpper()))
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRE,
+                            MARCA = x.MARCA_VEHICULO.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridModelo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
+        }
     }
 }

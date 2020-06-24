@@ -64,31 +64,60 @@ namespace RentCar
 
         private bool ValidateData()
         {
-            if (dpVehiculo.SelectedIndex == -1)
-            {
-                dpVehiculo.Focus();
-                MessageBox.Show("Debe seleccionar un vehiculo");
-                return false;
-            }
-
             if (dpCliente.SelectedIndex == -1)
             {
+                MessageBox.Show("Debe seleccionar un cliente.");
                 dpCliente.Focus();
-                MessageBox.Show("Debe seleccionar un cliente");
                 return false;
             }
 
-            if (model.ID_INSPECCION == 0)
+            if (dpVehiculo.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe crear una inspeccion");
+                MessageBox.Show("Debe seleccionar un vehiculo.");
+                dpVehiculo.Focus();
                 return false;
             }
 
-            if (String.IsNullOrWhiteSpace(txtMontoDia.Text))
+            if (string.IsNullOrWhiteSpace(txtMontoDia.Text))
             {
+                MessageBox.Show("Debe ingresar el monto or dia de la renta.");
                 txtMontoDia.Focus();
-                MessageBox.Show("Debe ingresar el monto de la renta por dia");
                 return false;
+            }
+
+            if (dpCantidaCombustible.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar la cantidad de combustible disponible.");
+                dpCantidaCombustible.Focus();
+                return false;
+            }
+
+            if (renta.ID == 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    int ID_VEHICULO = Convert.ToInt32(dpVehiculo.SelectedValue);
+                    DateTime StartDate = dpFechaRenta.Value;
+                    DateTime EndDate = dpDevolucion.Value;
+
+                    int VehicleIsRented = db.RENTA
+                        .Where(x =>
+                            x.ID_VEHICULO == ID_VEHICULO &&
+                            (
+                                (StartDate >= x.FECHA_RENTA && StartDate <= x.FECHA_DEVOLUCION)
+                                ||
+                                (EndDate >= x.FECHA_RENTA && EndDate <= x.FECHA_DEVOLUCION)
+                            )
+                        )
+                        .Count();
+
+                    if (VehicleIsRented > 0)
+                    {
+                        MessageBox.Show("El vehiculo seleccionado ya esta reservado para el rango de fecha ingresado.");
+                        dpFechaRenta.Focus();
+                        return false;
+                    }
+                }
             }
 
             return true;
@@ -166,12 +195,13 @@ namespace RentCar
                         renta.ESTADO = false;
                         db.RENTA.Add(renta);
 
+                        db.SaveChanges();
+                        MessageBox.Show("Renta Creada Existosamente");
+                        ClearForm();
+                        PopulateDataGridView();
                     }
 
-                    db.SaveChanges();
-                    MessageBox.Show("Renta Creada Existosamente");
-                    ClearForm();
-                    PopulateDataGridView();
+                 
                 }
             }
         }
@@ -267,7 +297,6 @@ namespace RentCar
 
         private void FromRenta_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             ClearForm();
             PopulateDataGridView();
             PopulateCombos();
@@ -308,53 +337,7 @@ namespace RentCar
         {
             SetTotalAPagar();
         }
-
-        private void gridRenta_DoubleClick(object sender, EventArgs e)
-        {
-            if (gridRenta.CurrentRow.Index != -1)
-            {
-                renta.ID = Convert.ToInt32(gridRenta.CurrentRow.Cells["ID"].Value);
-                using (DBEntities db = new DBEntities())
-                {
-                    //Renta
-                    renta = db.RENTA.Where(x => x.ID == renta.ID).FirstOrDefault();
-                    dpCliente.Enabled = true;
-                    dpCliente.SelectedValue = Convert.ToInt32(renta.ID_CLIENTE);
-                    dpVehiculo.Enabled = true;
-                    dpVehiculo.SelectedValue = Convert.ToInt32(renta.ID_VEHICULO);
-                    dpFechaRenta.Enabled = true;
-                    dpFechaRenta.Value = Convert.ToDateTime(renta.FECHA_RENTA);
-                    dpDevolucion.Enabled = true;
-                    dpDevolucion.Value = Convert.ToDateTime(renta.FECHA_DEVOLUCION);
-                    txtDescripcion.Enabled = true;
-                    txtDescripcion.Text = renta.DESCRIPCION;
-                    txtCantidadDias.Text = renta.CANTIDAD_DIAS.ToString();
-                    txtMontoDia.Enabled = true;
-                    txtMontoDia.Text = renta.MONTO_DIA.ToString();
-                    txtCodigo.Text = renta.CODIGO;
-                    chcEstado.Enabled = true;
-                    chcEstado.Checked = Convert.ToBoolean(renta.ESTADO);
-
-                    //inspeccion
-                    inspeccion = db.INSPECCION.Where(x => x.ID == renta.ID_INSPECCION).FirstOrDefault();
-                    chcLlantaDerechaD.Checked = Convert.ToBoolean(inspeccion.GOMA_DELANTERA_DERECHA);
-                    chcLlantaIzquierdaD.Checked = Convert.ToBoolean(inspeccion.GOMA_DELANTERA_IZQUIERDA);
-                    chcLlantaDerechaT.Checked = Convert.ToBoolean(inspeccion.GOMA_TRASERA_DERECHA);
-                    chcLlantaIzquierdaT.Checked = Convert.ToBoolean(inspeccion.GOMA_TRASERA_IZQUIERDA);
-                    chcTieneGoma.Checked = Convert.ToBoolean(inspeccion.TIENE_GOMA);
-                    chcRayadura.Checked = Convert.ToBoolean(inspeccion.TIENE_RAYADURAS);
-                    chcTieneGato.Checked = Convert.ToBoolean(inspeccion.TIENE_GATO);
-                    chcTieneRoturaCristal.Checked = Convert.ToBoolean(inspeccion.TIENE_ROTURA_CRISTAL);
-                    dpCantidaCombustible.SelectedValue = Convert.ToInt32(inspeccion.ID_CANTIDAD_COMBUSTIBLE);
-                }
-
-                btnNuevo.Enabled = false;
-                btnCancelar.Enabled = true;
-                btnSave.Enabled = true;
-            }
-        }
         
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             //Renta
@@ -398,11 +381,7 @@ namespace RentCar
             chcTieneRoturaCristal.Enabled = true;
             dpCantidaCombustible.Enabled = true;
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void txtCantidadDias_TextChanged(object sender, EventArgs e)
         {
@@ -486,6 +465,206 @@ namespace RentCar
                 saveFileDialog.ShowDialog();
                 htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
             }
+        }
+
+        private void gridRenta_DoubleClick_1(object sender, EventArgs e)
+        {
+            if (gridRenta.CurrentRow.Index != -1)
+            {
+                renta.ID = Convert.ToInt32(gridRenta.CurrentRow.Cells["ID"].Value);
+                using (DBEntities db = new DBEntities())
+                {
+                    //Renta
+                    renta = db.RENTA.Where(x => x.ID == renta.ID).FirstOrDefault();
+                    dpCliente.Enabled = true;
+                    dpCliente.SelectedValue = Convert.ToInt32(renta.ID_CLIENTE);
+                    dpVehiculo.Enabled = true;
+                    dpVehiculo.SelectedValue = Convert.ToInt32(renta.ID_VEHICULO);
+                    dpFechaRenta.Enabled = true;
+                    dpFechaRenta.Value = Convert.ToDateTime(renta.FECHA_RENTA);
+                    dpDevolucion.Enabled = true;
+                    dpDevolucion.Value = Convert.ToDateTime(renta.FECHA_DEVOLUCION);
+                    txtDescripcion.Enabled = true;
+                    txtDescripcion.Text = renta.DESCRIPCION;
+                    txtCantidadDias.Text = renta.CANTIDAD_DIAS.ToString();
+                    txtMontoDia.Enabled = true;
+                    txtMontoDia.Text = renta.MONTO_DIA.ToString();
+                    txtCodigo.Text = renta.CODIGO;
+                    chcEstado.Enabled = true;
+                    chcEstado.Checked = Convert.ToBoolean(renta.ESTADO);
+
+                    //inspeccion
+                    inspeccion = db.INSPECCION.Where(x => x.ID == renta.ID_INSPECCION).FirstOrDefault();
+                    chcLlantaDerechaD.Checked = Convert.ToBoolean(inspeccion.GOMA_DELANTERA_DERECHA);
+                    chcLlantaIzquierdaD.Checked = Convert.ToBoolean(inspeccion.GOMA_DELANTERA_IZQUIERDA);
+                    chcLlantaDerechaT.Checked = Convert.ToBoolean(inspeccion.GOMA_TRASERA_DERECHA);
+                    chcLlantaIzquierdaT.Checked = Convert.ToBoolean(inspeccion.GOMA_TRASERA_IZQUIERDA);
+                    chcTieneGoma.Checked = Convert.ToBoolean(inspeccion.TIENE_GOMA);
+                    chcRayadura.Checked = Convert.ToBoolean(inspeccion.TIENE_RAYADURAS);
+                    chcTieneGato.Checked = Convert.ToBoolean(inspeccion.TIENE_GATO);
+                    chcTieneRoturaCristal.Checked = Convert.ToBoolean(inspeccion.TIENE_ROTURA_CRISTAL);
+                    dpCantidaCombustible.SelectedValue = Convert.ToInt32(inspeccion.ID_CANTIDAD_COMBUSTIBLE);
+                }
+
+                btnNuevo.Enabled = false;
+                btnCancelar.Enabled = true;
+                btnSave.Enabled = true;
+            }
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcLlantaIzquierdaT_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcLlantaIzquierdaD_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcLlantaDerechaT_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcLlantaDerechaD_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpCantidaCombustible_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcRayadura_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcTieneGoma_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcTieneGato_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chcTieneRoturaCristal_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpVehiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbFechaCreacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

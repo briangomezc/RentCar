@@ -115,22 +115,22 @@ namespace RentCar
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea borrar este elemento?", "Eliminar Elemento", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string question = (model.ESTADO == true) ? "Desea desactivar este elemento?" : "Desea activar este elemento";
+
+            if (MessageBox.Show(question, "Cambiar Estado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                model.ESTADO = !model.ESTADO;
+
                 using (DBEntities db = new DBEntities())
                 {
-                    var entry = db.Entry(model);
-                    if (entry.State == System.Data.Entity.EntityState.Detached)
-                    {
-                        db.VEHICULO.Attach(model);
-                    }
-                    db.VEHICULO.Remove(model);
+                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-
-                    PopulateDataGridView();
-                    PopulateCombos();
-                    ClearForm();
                 }
+                ClearForm();
+                PopulateDataGridView();
+                PopulateCombos();
+                string result = (model.ESTADO == true) ? "Vehiculo activado existosamente" : "Vehiculo desactivado existosamente";
+                MessageBox.Show(result);
             }
         }
 
@@ -162,6 +162,7 @@ namespace RentCar
                     txtNombre.Text = model.DESCRIPCION;
                     dpFechaCreacion.Text = model.FECHA_CREACION.ToString();
                 }
+                btnDelete.Text = model.ESTADO == true ? "Deshabilitar" : "Habilitar";
                 btnSave.Text = "Actualizar";
                 btnDelete.Enabled = true;
             }
@@ -177,6 +178,43 @@ namespace RentCar
         private void dpModeloVehiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.VEHICULO
+                        .Where(x =>
+                            x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim().ToUpper()) ||
+                            x.MODELO_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim().ToUpper()) ||
+                            x.NUMERO_CHASIS.Contains(txtFiltrar.Text.Trim()) ||
+                            x.NUMERO_MOTOR.Contains(txtFiltrar.Text.Trim()) ||
+                            x.NUMERO_PLACA.Contains(txtFiltrar.Text.Trim()) ||
+                            x.TIPO_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim().ToUpper()) ||
+                            x.COMBUSTIBLE_VEHICULO.NOMBRE.Contains(txtFiltrar.Text.Trim().ToUpper())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NUMERO_CHASIS,
+                            x.NUMERO_PLACA,
+                            x.TIPO_VEHICULO,
+                            MARCA = x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE,
+                            MODELO = x.MODELO_VEHICULO.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridVehiculo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
         }
     }
 }

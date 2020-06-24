@@ -244,5 +244,42 @@ namespace RentCar
             }
 
         }
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.CLIENTE
+                        .Where(x =>
+                            x.NOMBRES.Contains(txtFiltrar.Text.Trim()) ||
+                            x.APELLIDOS.Contains(txtFiltrar.Text.Trim()) ||
+                            x.CEDULA.Contains(txtFiltrar.Text.Trim()) ||
+                            x.EMAIL.Contains(txtFiltrar.Text.Trim().ToLower()) ||
+                            x.TELEFONO.Contains(txtFiltrar.Text.Trim()) ||
+                            x.TIPO_CLIENTE.DESCRIPCION.Contains(txtFiltrar.Text.Trim().ToUpper())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRES,
+                            x.APELLIDOS,
+                            x.CEDULA,
+                            x.EMAIL,
+                            x.TELEFONO,
+                            x.LIMITE_CREDITO,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridCliente.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
+        }
     }
 }

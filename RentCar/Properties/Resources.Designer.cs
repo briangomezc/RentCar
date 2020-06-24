@@ -63,6 +63,36 @@ namespace RentCar.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap descarga {
+            get {
+                object obj = ResourceManager.GetObject("descarga", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap editada {
+            get {
+                object obj = ResourceManager.GetObject("editada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap editada1 {
+            get {
+                object obj = ResourceManager.GetObject("editada1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap form_wizard_login {
             get {
                 object obj = ResourceManager.GetObject("form-wizard-login", resourceCulture);
@@ -76,6 +106,16 @@ namespace RentCar.Properties {
         internal static System.Drawing.Bitmap form_wizard_login1 {
             get {
                 object obj = ResourceManager.GetObject("form-wizard-login1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rentacarhello_scaled {
+            get {
+                object obj = ResourceManager.GetObject("rentacarhello-scaled", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

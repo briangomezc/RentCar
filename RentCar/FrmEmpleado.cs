@@ -133,7 +133,6 @@ namespace RentCar
 
         private void FrmEmpleado_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             ClearForm();
             PopulateDataGridView();
             PopulateCombos();
@@ -286,6 +285,59 @@ namespace RentCar
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.EMPLEADO
+                        .Where(x =>
+                            x.NOMBRES.Contains(txtFiltrar.Text.Trim()) ||
+                            x.APELLIDOS.Contains(txtFiltrar.Text.Trim()) ||
+                            x.TIPO_EMPLEADO.DESCRIPCION.Contains(txtFiltrar.Text.Trim())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRES,
+                            x.APELLIDOS,
+                            x.EMAIL,
+                            TIPO_EMPLEADO = x.TIPO_EMPLEADO.DESCRIPCION,
+                            x.FECHA_INGRESO,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    dataGridView1.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbFechaCreacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

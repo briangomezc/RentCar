@@ -39,12 +39,15 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFiltrar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridTipoVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(607, 99);
+            this.btnClose.Location = new System.Drawing.Point(623, 254);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 0;
@@ -55,7 +58,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 39);
+            this.label1.Location = new System.Drawing.Point(40, 194);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 1;
@@ -64,7 +67,7 @@
             // chcEstado
             // 
             this.chcEstado.AutoSize = true;
-            this.chcEstado.Location = new System.Drawing.Point(267, 39);
+            this.chcEstado.Location = new System.Drawing.Point(283, 194);
             this.chcEstado.Name = "chcEstado";
             this.chcEstado.Size = new System.Drawing.Size(59, 17);
             this.chcEstado.TabIndex = 2;
@@ -73,14 +76,14 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(74, 36);
+            this.txtNombre.Location = new System.Drawing.Point(90, 191);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(155, 20);
             this.txtNombre.TabIndex = 3;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(38, 97);
+            this.btnSave.Location = new System.Drawing.Point(54, 252);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -90,17 +93,17 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(147, 96);
+            this.btnDelete.Location = new System.Drawing.Point(163, 251);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(109, 23);
             this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.Text = "Cambiar Estado";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(469, 97);
+            this.button4.Location = new System.Drawing.Point(485, 252);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 25);
             this.button4.TabIndex = 6;
@@ -117,10 +120,10 @@
             this.NOMBRE,
             this.ESTADO});
             this.gridTipoVehiculo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridTipoVehiculo.Location = new System.Drawing.Point(0, 227);
+            this.gridTipoVehiculo.Location = new System.Drawing.Point(0, 436);
             this.gridTipoVehiculo.Name = "gridTipoVehiculo";
             this.gridTipoVehiculo.ReadOnly = true;
-            this.gridTipoVehiculo.Size = new System.Drawing.Size(800, 223);
+            this.gridTipoVehiculo.Size = new System.Drawing.Size(1085, 223);
             this.gridTipoVehiculo.TabIndex = 7;
             this.gridTipoVehiculo.DoubleClick += new System.EventHandler(this.gridTipoVehiculo_DoubleClick);
             // 
@@ -147,11 +150,41 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(26, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(212, 37);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Tipo Vehiculo";
+            // 
+            // txtFiltrar
+            // 
+            this.txtFiltrar.Location = new System.Drawing.Point(783, 410);
+            this.txtFiltrar.Name = "txtFiltrar";
+            this.txtFiltrar.Size = new System.Drawing.Size(155, 20);
+            this.txtFiltrar.TabIndex = 10;
+            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(733, 413);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Buscar";
+            // 
             // FrmTipo_Vehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1085, 659);
+            this.Controls.Add(this.txtFiltrar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.gridTipoVehiculo);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnDelete);
@@ -160,6 +193,7 @@
             this.Controls.Add(this.chcEstado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmTipo_Vehiculo";
             this.Text = "FrmTipo_Vehiculo";
             this.Load += new System.EventHandler(this.FrmTipo_Vehiculo_Load);
@@ -182,5 +216,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtFiltrar;
+        private System.Windows.Forms.Label label3;
     }
 }
