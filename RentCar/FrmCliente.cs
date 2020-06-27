@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using RazorEngine;
 using RazorEngine.Templating;
+using System.Data.SqlClient;
 
 namespace RentCar
 {
@@ -93,6 +94,18 @@ namespace RentCar
                 txtCedula.Focus();
                 return false;
             }
+            if (txtCedula.TextLength < 11)
+            {
+                MessageBox.Show("Has digitado menos de 11 digitos en la cedula");
+                txtCedula.Focus();
+                return false;
+            }
+            if (txtCedula.TextLength > 11)
+            {
+                MessageBox.Show("Has digitado mas de 11 digitos en la cedula");
+                txtCedula.Focus();
+                return false;
+            }
 
             if (String.IsNullOrWhiteSpace(txtEmail.Text))
             {
@@ -104,6 +117,19 @@ namespace RentCar
             if (String.IsNullOrWhiteSpace(txtTarjetaCredito.Text))
             {
                 MessageBox.Show("Debe ingresar la tarjeta de credito del cliente.");
+                txtTarjetaCredito.Focus();
+                return false;
+            }
+
+            if (txtTarjetaCredito.TextLength < 16)
+            {
+                MessageBox.Show("Has digitado menos de 16 digitos en la tarjeta de credito");
+                txtTarjetaCredito.Focus();
+                return false;
+            }
+            if (txtTarjetaCredito.TextLength > 16)
+            {
+                MessageBox.Show("Has digitado mas de 11 digitos en la tarjeta de credito");
                 txtTarjetaCredito.Focus();
                 return false;
             }
@@ -129,6 +155,7 @@ namespace RentCar
         {
             if (ValidateData())
             {
+                CLIENTE cliente = new CLIENTE();
                 model.NOMBRES = txtNombre.Text.Trim();
                 model.APELLIDOS = txtApellidos.Text.Trim();
                 model.CEDULA = txtCedula.Text.Trim();
@@ -151,6 +178,7 @@ namespace RentCar
                         db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     }
                     db.SaveChanges();
+                    
                 }
                 ClearForm();
                 PopulateDataGridView();
