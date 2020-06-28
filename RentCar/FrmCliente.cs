@@ -142,6 +142,14 @@ namespace RentCar
                 return false;
             }
 
+            if (Convert.ToInt32(txtLimiteCredito.Text) < 0 )
+            {
+                MessageBox.Show("Debe ingresar el limite de credito mayor a 0.");
+                txtLimiteCredito.Focus();
+                return false;
+            }
+
+
             if (dpTipoPersona.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar el tipo de cliente.");

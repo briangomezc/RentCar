@@ -91,7 +91,7 @@ namespace RentCar
 
         private void rentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new FromRenta());
+            openChildForm(new FromRenta(EMPLEADO));
         }
 
         private void tandaToolStripMenuItem_Click(object sender, EventArgs e)
