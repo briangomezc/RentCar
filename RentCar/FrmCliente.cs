@@ -11,6 +11,7 @@ using System.IO;
 using RazorEngine;
 using RazorEngine.Templating;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace RentCar
 {
@@ -129,7 +130,7 @@ namespace RentCar
             }
             if (txtTarjetaCredito.TextLength > 16)
             {
-                MessageBox.Show("Has digitado mas de 11 digitos en la tarjeta de credito");
+                MessageBox.Show("Has digitado mas de 16 digitos en la tarjeta de credito");
                 txtTarjetaCredito.Focus();
                 return false;
             }
@@ -147,6 +148,12 @@ namespace RentCar
                 dpTipoPersona.Focus();
                 return false;
             }
+            if(IsValidCedula(txtCedula.Text) == false)
+            {
+                MessageBox.Show("Debe registrar una cedula que exista,");
+                txtCedula.Focus();
+                return false;
+            }
 
             return true;
         }
@@ -155,7 +162,6 @@ namespace RentCar
         {
             if (ValidateData())
             {
-                CLIENTE cliente = new CLIENTE();
                 model.NOMBRES = txtNombre.Text.Trim();
                 model.APELLIDOS = txtApellidos.Text.Trim();
                 model.CEDULA = txtCedula.Text.Trim();
@@ -185,6 +191,33 @@ namespace RentCar
                 PopulateCombos();
                 MessageBox.Show("Cliente actualizado existosamente");
             }
+        }
+
+        public static bool IsValidCedula(string txtCedula)
+        {
+            // Valid format?
+            if (txtCedula.Equals(null))
+            {
+                return false;
+            }
+            else
+            {
+                txtCedula = Regex.Replace(txtCedula, "[^0-9]", string.Empty); // Only keep #s.
+                if (txtCedula.Equals(null) || !txtCedula.Length.Equals(11) || long.Parse(txtCedula).Equals(0))
+                {
+                    return false;
+                }
+            }
+
+            // Validate.
+            int sum = 0;
+            for (int i = 0; i < 10; ++i)
+            {
+                int n = ((i + 1) % 2 != 0 ? 1 : 2) * int.Parse(txtCedula.Substring(i, 1));
+                sum += (n <= 9 ? n : n % 10 + 1);
+            }
+            int dig = ((10 - sum % 10) % 10);
+            return (dig.Equals(int.Parse(txtCedula.Substring(10, 1))) ? true : false);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
